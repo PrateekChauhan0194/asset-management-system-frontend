@@ -1,15 +1,17 @@
 /* allign heading to center */
 .heading {
-  text-align: center;
+    text-align: center;
 }
 
 /* Set background image to the page */
 body {
-  background: url(https://2tmyyo2hfiyn188j8z2gyj5f-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/home-banner.png) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    /* background: url(https://i.pinimg.com/originals/07/05/31/07053134fec1b048765c844e332f7139.jpg) no-repeat center center fixed; */
+    /* background: url(https://wallpaperaccess.com/full/1330295.jpg) no-repeat center center fixed; */
+    background: url(https://3.bp.blogspot.com/-PRZVW7mx1pE/UFqc5QLbkAI/AAAAAAAALxM/TO6lfqZV-1g/s1600/indian_air_force_salute_formation.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /* Set container position to the center of the page */
@@ -22,13 +24,14 @@ body {
 
 /* Translucent background to the card */
 .card {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 /* Translucent background to the email and password inputs */
-input[type=email], input[type=password] {
-  background-color: rgba(0, 0, 0, 0.5);
+input[type=text], input[type=password] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
