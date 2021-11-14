@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Login from './components/Login/Login';
 import { ToastContainer } from 'react-toastify';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
     </>

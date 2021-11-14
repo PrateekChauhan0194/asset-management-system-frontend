@@ -2,6 +2,7 @@ import './Login.css';
 import React from 'react';
 import bcrypt from 'bcryptjs';
 import { toast } from 'react-toastify';
+import { login, logout } from '../../services/AuthService';
 
 const doLogin = async (e) => {
     e.preventDefault();
@@ -13,15 +14,19 @@ const doLogin = async (e) => {
     const isPasswordCorrect = await bcrypt.compare(password, securePassword);
     if (isPasswordCorrect && username === 'admin') {
         console.log('Login successful!');
+        login();
+        window.location.href = '/dashboard';
     } else {
         toast.error('Incorrect username or password!', {
             position: toast.POSITION.TOP_RIGHT,
             hideProgressBar: true
         });
+        logout();
     }
 }
 
 const Login = () => {
+    logout();
     return (
         <>
             <div className="container">
