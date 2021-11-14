@@ -7,15 +7,16 @@
 body {
     /* background: url(https://i.pinimg.com/originals/07/05/31/07053134fec1b048765c844e332f7139.jpg) no-repeat center center fixed; */
     /* background: url(https://wallpaperaccess.com/full/1330295.jpg) no-repeat center center fixed; */
-    background: url(https://3.bp.blogspot.com/-PRZVW7mx1pE/UFqc5QLbkAI/AAAAAAAALxM/TO6lfqZV-1g/s1600/indian_air_force_salute_formation.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
+    /* background: url(https://3.bp.blogspot.com/-PRZVW7mx1pE/UFqc5QLbkAI/AAAAAAAALxM/TO6lfqZV-1g/s1600/indian_air_force_salute_formation.jpg) no-repeat center center fixed; */
+    background: url(../../images/background.jpeg    ) no-repeat center center fixed;
+    -webkit-background-size: cover; 
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
 /* Set container position to the center of the page */
-.container {
+.login-container {
     position: absolute;
     top: 50%;
     left: 50%;

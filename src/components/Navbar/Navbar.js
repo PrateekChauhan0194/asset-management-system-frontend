@@ -2,6 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../services/AuthService';
 
+const isDashboard = () => {
+    return window.location.pathname === '/dashboard';
+}
+
+const isLoanCards = () => {
+    return window.location.pathname === '/loan-cards';
+}
+
+
 const Navbar = () => {
     return (
         <>
@@ -11,13 +20,13 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <Link className="navbar-brand" to="/">Asset Management System</Link>
+                        <Link className="navbar-brand" to="/dashboard">Asset Management System</Link>
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/dashboard">Dashboard</Link>
+                                <Link className={`nav-link ${isDashboard() && 'active'}`} aria-current="page" to="/dashboard">Dashboard</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/loan-cards">Loan cards</Link>
+                                <Link className={`nav-link ${isLoanCards() && 'active'}`} to="/loan-cards">Loan cards</Link>
                             </li>
                         </ul>
                         <form className="d-flex">
