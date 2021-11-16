@@ -10,10 +10,10 @@ const doLogin = async (e) => {
     const username = document.getElementsByName('username')[0].value;
     const password = document.getElementsByName('password')[0].value;
 
-    const securePassword = await bcrypt.hash('A$$etSecPass', bcrypt.genSaltSync(10));
+    // const securePassword = await bcrypt.hash('A$$etSecPass', bcrypt.genSaltSync(10));
+    const securePassword = '$2a$10$KbuWuI4W0zkKBWV8cpx1x.5SSMJ.hKNw7m05utB1xku8JhpqhSzay';
     const isPasswordCorrect = await bcrypt.compare(password, securePassword);
     if (isPasswordCorrect && username === 'admin') {
-        console.log('Login successful!');
         login();
         window.location.href = '/dashboard';
     } else {

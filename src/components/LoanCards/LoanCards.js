@@ -25,7 +25,6 @@ const LoanCards = () => {
             <>
                 <Navbar />
                 <div className="container">
-                    {/* Bootstrap table to display all the borrowers */}
                     <table className="table table-striped mt-5">
                         <thead>
                             <tr>
