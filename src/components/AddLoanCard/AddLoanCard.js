@@ -27,11 +27,19 @@ const AddLoanCard = ({ setBorrowers }) => {
             const data = await response.json();
             setBorrowers(data);
             toast.success('Loan card added successfully');
+            clearForm();
         } else {
             data.errors.forEach((error) => {
                 toast.error(error.msg);
             });
         }
+    }
+
+    const clearForm = () => {
+        document.getElementById('form-add-loan-card--text-service-number').value = '';
+        document.getElementById('form-add-loan-card--text-rank').value = '';
+        document.getElementById('form-add-loan-card--text-full-name').value = '';
+        document.getElementById('form-add-loan-card--text-department').value = '';
     }
 
     return (
