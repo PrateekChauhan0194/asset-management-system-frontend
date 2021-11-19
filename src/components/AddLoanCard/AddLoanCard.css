@@ -2,7 +2,7 @@ h1 {
     font-family: 'Lato', sans-serif;
 }
 
-.container-add-loan-card-form input {
+/* .container-add-loan-card-form input {
     width: 100%;
     padding: 12px 20px;
     margin-bottom: 1.5rem;
@@ -10,13 +10,10 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
+} */
 
 .container-add-loan-card-form button {
     color: white;
-    padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    cursor: pointer;
     width: 20%;
 }

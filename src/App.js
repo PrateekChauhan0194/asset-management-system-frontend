@@ -13,7 +13,7 @@ import LoanCards from './components/LoanCards/LoanCards';
 function App() {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer hideProgressBar='true' />
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />

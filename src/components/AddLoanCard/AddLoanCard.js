@@ -2,6 +2,7 @@ import './AddLoanCard.css';
 import React from 'react';
 import { API_HOST } from '../../config';
 import { toast } from 'react-toastify';
+import { FormControl, InputLabel, Input, Button, Typography } from '@mui/material';
 
 const AddLoanCard = ({ setBorrowers }) => {
     const addNewLoanCard = async (e) => {
@@ -25,41 +26,47 @@ const AddLoanCard = ({ setBorrowers }) => {
             const response = await fetch(`${API_HOST}/api/v1/borrower/getAll`);
             const data = await response.json();
             setBorrowers(data);
+            toast.success('Loan card added successfully');
         } else {
             data.errors.forEach((error) => {
-                toast.error(error.msg, {
-                    position: toast.POSITION.TOP_RIGHT,
-                    hideProgressBar: true,
-                    autoClose: 5000,
-                });
+                toast.error(error.msg);
             });
         }
-        console.log(data);
     }
 
     return (
         <div className="container">
             <div className="container-add-loan-card">
-                <h1 className="title-add-loan-card my-5">Add new loan card</h1>
+                <Typography variant="h2" className="title-add-loan-card my-5">
+                    Add new loan card
+                </Typography>
                 <div className="container-add-loan-card-form">
                     <form className="form-add-loan-card">
-                        <div className="form-group">
-                            <label htmlFor="name">Service Number</label>
-                            <input type="text" className="form-control" id="form-add-loan-card--text-service-number" placeholder="Enter service number" />
+                        <div className="form-group my-4">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="service-number">Service Number</InputLabel>
+                                <Input id="form-add-loan-card--text-service-number" aria-describedby="text-service-number" />
+                            </FormControl>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="name">Rank</label>
-                            <input type="text" className="form-control" id="form-add-loan-card--text-rank" placeholder="Enter rank" />
+                        <div className="form-group my-4">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="rank">Rank</InputLabel>
+                                <Input id="form-add-loan-card--text-rank" aria-describedby="text-rank" />
+                            </FormControl>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="name">Full Name</label>
-                            <input type="text" className="form-control" id="form-add-loan-card--text-full-name" placeholder="Enter full name" />
+                        <div className="form-group my-4">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="full-name">Full Name</InputLabel>
+                                <Input id="form-add-loan-card--text-full-name" aria-describedby="text-full-name" />
+                            </FormControl>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="name">Department</label>
-                            <input type="text" className="form-control" id="form-add-loan-card--text-department" placeholder="Enter department" />
+                        <div className="form-group my-4">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="department">Department</InputLabel>
+                                <Input id="form-add-loan-card--text-department" aria-describedby="text-department" />
+                            </FormControl>
                         </div>
-                        <button type="submit" className="btn btn-primary btn-lg mt-3" onClick={addNewLoanCard}>Add</button>
+                        <Button variant="contained" size='large' color="primary" onClick={addNewLoanCard}>Add</Button>
                     </form>
                 </div>
             </div>

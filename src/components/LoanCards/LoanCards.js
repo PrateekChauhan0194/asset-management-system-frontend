@@ -4,6 +4,7 @@ import { isLoggedIn } from '../../services/AuthService';
 import Navbar from '../Navbar/Navbar';
 import { API_HOST } from '../../config';
 import AddLoanCard from '../AddLoanCard/AddLoanCard';
+import { Button, Typography } from '@mui/material';
 
 const LoanCards = () => {
 
@@ -27,7 +28,9 @@ const LoanCards = () => {
                 <AddLoanCard setBorrowers={setBorrowers} />
                 <div className="container">
                     <div className='container-loan-cards-list'>
-                        <h1 className="title-loan-cards-list mt-5">Loan cards</h1>
+                        <Typography variant="h2" className="title-loan-cards-list mt-5">
+                            Loan cards
+                        </Typography>
                         <table className="table table-striped mt-5">
                             <thead>
                                 <tr>
@@ -48,7 +51,9 @@ const LoanCards = () => {
                                                 <td>{borrower.fullName}</td>
                                                 <td>{borrower.department}</td>
                                                 <td>
-                                                    <button className="btn btn-sm btn-primary">👁️ View</button>
+                                                    <Button variant="contained" size="small" color="primary" className="btn-loan-card">
+                                                        👁️ View
+                                                    </Button>
                                                 </td>
                                             </tr>
                                         )
