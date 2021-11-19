@@ -4,7 +4,8 @@ import { isLoggedIn } from '../../services/AuthService';
 import Navbar from '../Navbar/Navbar';
 import { API_HOST } from '../../config';
 import AddLoanCard from '../AddLoanCard/AddLoanCard';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import { Card } from 'react-bootstrap';
 
 const LoanCards = () => {
 
@@ -31,7 +32,7 @@ const LoanCards = () => {
                         <Typography variant="h2" className="title-loan-cards-list mt-5">
                             Loan cards
                         </Typography>
-                        <table className="table table-striped mt-5">
+                        {/* <table className="table table-striped mt-5">
                             <thead>
                                 <tr>
                                     <th>Service Number</th>
@@ -60,7 +61,27 @@ const LoanCards = () => {
                                     })
                                 }
                             </tbody>
-                        </table>
+                        </table> */}
+
+                        <div className="container-loan-cards-list-cards">
+                            {
+                                borrowers.map((borrower, index) => {
+                                    return (
+                                        <Card text='dark' className='m-2 loan-card' style={{ width: '18rem' }} key={index}>
+                                            <Card.Body>
+                                                <Card.Title>{borrower.rank} {borrower.fullName}</Card.Title>
+                                                <Card.Subtitle className='mb-2 text-muted'>Service No: {borrower.serviceNumber}</Card.Subtitle>
+                                                <Card.Text>Section: {borrower.department}</Card.Text>
+                                                {/* <div className='controls my-2 d-flex justify-content-end'>
+                                                    <i className='far fa-edit mx-2' data-bs-toggle='modal' data-bs-target='#edit-note-modal' />
+                                                </div> */}
+                                                <Card.Footer><small><b>Created on:</b> {new Date(borrower.dataCreationDate).toDateString()}</small></Card.Footer>
+                                            </Card.Body>
+                                        </Card>
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             </>
