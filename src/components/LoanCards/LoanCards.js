@@ -72,9 +72,12 @@ const LoanCards = () => {
                                                 <Card.Title>{borrower.rank} {borrower.fullName}</Card.Title>
                                                 <Card.Subtitle className='mb-2 text-muted'>Service No: {borrower.serviceNumber}</Card.Subtitle>
                                                 <Card.Text>Section: {borrower.department}</Card.Text>
-                                                {/* <div className='controls my-2 d-flex justify-content-end'>
-                                                    <i className='far fa-edit mx-2' data-bs-toggle='modal' data-bs-target='#edit-note-modal' />
-                                                </div> */}
+                                                <div className='controls my-2 d-flex justify-content-end'>
+                                                    <i className="fas fa-eye  mx-1"></i>
+                                                    <i className="fas fa-edit mx-1"></i>
+                                                    <i className="fas fa-trash-alt delete-loan-card mx-1" />
+                                                    {/* <i className='far fa-edit mx-2' data-bs-toggle='modal' data-bs-target='#edit-note-modal' /> */}
+                                                </div>
                                                 <Card.Footer><small><b>Created on:</b> {new Date(borrower.dataCreationDate).toDateString()}</small></Card.Footer>
                                             </Card.Body>
                                         </Card>
