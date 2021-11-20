@@ -7,27 +7,3 @@ h1 {
     display: flex;
     flex-wrap: wrap;
 }
-
-/* Apply translucent background to .loan-card */
-.loan-card {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: white;
-    border-radius: 5px;
-    padding: 0%;
-}
-
-.controls i {
-    cursor: pointer;
-}
-
-.controls .fa-trash-alt:hover {
-    color: red;
-}
-
-.controls .fa-edit:hover {
-    color: blue;
-}
-
-.controls .fa-eye:hover {
-    color: green;
-}
