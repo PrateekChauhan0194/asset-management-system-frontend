@@ -1,6 +1,8 @@
 import './EditLoanCard.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { getBorrowers } from '../../services/APIComms';
+import { API_HOST } from '../../config';
+import { toast } from 'react-toastify';
 
 const EditLoanCard = ({ borrower, setBorrowers }) => {
 
@@ -22,7 +24,25 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
     };
 
     const updateBorrower = async () => {
-        console.log('updateBorrower');
+        const response = await fetch(`${API_HOST}/api/v1/borrower/update/${borrower._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                serviceNumber,
+                rank,
+                fullName,
+                department,
+            }),
+        });
+        const data = await response.json();
+        if (!data.errors) {
+            toast.success('Loan card updated successfully.');
+            setBorrowers(await getBorrowers());
+        } else {
+            toast.error(data.errors[0].msg);
+        }
     };
 
     return (

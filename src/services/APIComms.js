@@ -6,4 +6,10 @@ const getBorrowers = async () => {
     return data;
 }
 
-export { getBorrowers };
+const getBorrower = async (id) => {
+    const response = await fetch(`${API_HOST}/api/v1/borrower/getById/${id}`);
+    const data = await response.json();
+    return data;
+}
+
+export { getBorrowers, getBorrower };
