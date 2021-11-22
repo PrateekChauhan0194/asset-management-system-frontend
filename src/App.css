@@ -10,6 +10,6 @@ i {
     color: blue;
 }
 
-.fa-eye:hover {
+.fa-eye:hover, .fa-exchange-alt:hover {
     color: green;
 }

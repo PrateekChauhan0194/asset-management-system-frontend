@@ -33,6 +33,42 @@ const Inventory = () => {
         }
     };
 
+    const issueItem = async (id) => {
+        const response = await fetch(`${API_HOST}/api/v1/item/getItem/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const item = await response.json();
+        if (!item.errors) {
+            const serviceNumber = prompt('Please enter the service number to issue the item');
+            if (serviceNumber) {
+                const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        serviceNumber,
+                        name: item.name,
+                        serialNumber: item.serialNumber,
+                        model: item.model,
+                        gigNumber: item.gigNumber,
+                    }),
+                });
+                const data = await response.json();
+                if (!data.errors) {
+                    alert(`Item issued to person with service number ${serviceNumber}`);
+                    toast.success('Item issued successfully');
+                    setInventoryItems(await getInventoryItems());
+                }
+            }
+        } else {
+            toast.error('Error in issuing item');
+        }
+    };
+
     return (
         isLoggedIn() ? (
             <>
@@ -53,6 +89,7 @@ const Inventory = () => {
                                     <th scope="col">Gig Number</th>
                                     <th scope="col">Data Creation Date</th>
                                     <th scope="col">Delete</th>
+                                    <th scope="col">Issue item</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,6 +102,7 @@ const Inventory = () => {
                                             <td>{inventoryItem.gigNumber}</td>
                                             <td>{new Date(inventoryItem.dataCreationDate).toDateString()}</td>
                                             <td><i className="fas fa-trash-alt delete-inventory-item mx-1" onClick={() => deleteItem(inventoryItem._id)} /></td>
+                                            <td><i className="fas fa-exchange-alt issue-inventory-item mx-1" onClick={() => issueItem(inventoryItem._id)} /></td>
                                         </tr>
                                     </>
                                 ))}
