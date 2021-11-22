@@ -3,6 +3,7 @@ import React from 'react';
 import { API_HOST } from '../../config';
 import { toast } from 'react-toastify';
 import { FormControl, InputLabel, Input, Button, Typography } from '@mui/material';
+import { getBorrowers } from '../../services/APIComms';
 
 const AddLoanCard = ({ setBorrowers }) => {
     const addNewLoanCard = async (e) => {
@@ -23,9 +24,7 @@ const AddLoanCard = ({ setBorrowers }) => {
         });
         const data = await response.json();
         if (!data.errors) {
-            const response = await fetch(`${API_HOST}/api/v1/borrower/getAll`);
-            const data = await response.json();
-            setBorrowers(data);
+            setBorrowers(await getBorrowers());
             toast.success('Loan card added successfully');
             clearForm();
         } else {

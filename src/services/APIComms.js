@@ -12,4 +12,11 @@ const getBorrower = async (id) => {
     return data;
 }
 
-export { getBorrowers, getBorrower };
+const getInventoryItems = async () => {
+    const defaultServiceNumber = 'inventory';
+    const response = await fetch(`${API_HOST}/api/v1/item/getItems/${defaultServiceNumber}`);
+    const data = await response.json();
+    return data;
+}
+
+export { getBorrowers, getBorrower, getInventoryItems };
