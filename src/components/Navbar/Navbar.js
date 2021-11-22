@@ -6,6 +6,10 @@ const isDashboard = () => {
     return window.location.pathname === '/dashboard';
 }
 
+const isInventory = () => {
+    return window.location.pathname === '/inventory';
+}
+
 const isLoanCards = () => {
     return window.location.pathname === '/loan-cards';
 }
@@ -24,6 +28,9 @@ const Navbar = () => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className={`nav-link ${isDashboard() && 'active'}`} aria-current="page" to="/dashboard">Dashboard</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className={`nav-link ${isInventory() && 'active'}`} to="/inventory">Inventory</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className={`nav-link ${isLoanCards() && 'active'}`} to="/loan-cards">Loan cards</Link>
