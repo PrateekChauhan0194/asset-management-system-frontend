@@ -5,6 +5,7 @@ import AddToInventory from '../AddToInventory/AddToInventory';
 import { getInventoryItems } from '../../services/APIComms';
 import { Typography } from '@mui/material';
 import { API_HOST } from '../../config';
+import { toast } from 'react-toastify';
 
 const Inventory = () => {
     const [inventoryItems, setInventoryItems] = useState([]);
@@ -16,7 +17,7 @@ const Inventory = () => {
 
     const deleteItem = async (id) => {
         // eslint-disable-next-line
-        const action = confirm('Are you sure you want to delete this item?');
+        const action = confirm('Item will be deleted permanently. Are you sure you want to delete this item?');
         if (action) {
             const response = await fetch(`${API_HOST}/api/v1/item/deleteItem/${id}`, {
                 method: 'DELETE',
@@ -26,6 +27,7 @@ const Inventory = () => {
             });
             const data = await response.json();
             if (!data.errors) {
+                toast.success('Item deleted successfully');
                 setInventoryItems(await getInventoryItems());
             }
         }
