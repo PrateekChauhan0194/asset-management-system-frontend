@@ -28,8 +28,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
 
         // Update all the found items' service number property to the new service number
         loanedItems.forEach(async (item) => {
-            // Call updateItem API
-            const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
+            await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
