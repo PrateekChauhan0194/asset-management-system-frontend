@@ -2,7 +2,11 @@ i {
     cursor: pointer;
 }
 
-.fa-trash-alt:hover {
+.fas {
+    text-decoration: none;
+}
+
+.fa-trash-alt:hover, .fa-undo-alt:hover {
     color: red;
 }
 

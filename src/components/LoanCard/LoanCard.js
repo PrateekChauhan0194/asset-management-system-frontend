@@ -6,6 +6,7 @@ import { API_HOST } from '../../config';
 import { toast } from 'react-toastify';
 import { getBorrowers } from '../../services/APIComms';
 import EditLoanCard from '../EditLoanCard/EditLoanCard';
+import LoanedItems from '../LoanedItems/LoanedItems';
 
 const LoanCard = (props) => {
 
@@ -41,16 +42,26 @@ const LoanCard = (props) => {
         document.getElementById(`editDepartment-${props.borrower._id}`).value = department;
     }
 
+    const [loanedItems, setLoanedItems] = React.useState([]);
+    const fetchLoanedItems = async (serviceNumber) => {
+        const response = await fetch(`${API_HOST}/api/v1/item/getItems/${serviceNumber}`);
+        const data = await response.json();
+        if (!data.errors) {
+            setLoanedItems(data);
+        }
+    }
+
     return (
         <>
             <EditLoanCard borrower={props.borrower} setBorrowers={props.setBorrowers} />
+            <LoanedItems borrower={props.borrower} loanedItems={loanedItems} />
             <Card text='dark' className='m-2 loan-card' style={{ width: '18rem' }}>
                 <Card.Body>
                     <Card.Title>{props.borrower.rank} {props.borrower.fullName}</Card.Title>
                     <Card.Subtitle className='mb-2 text-muted'>Service No: {props.borrower.serviceNumber}</Card.Subtitle>
                     <Card.Text>Section: {props.borrower.department}</Card.Text>
                     <div className='controls my-2 d-flex justify-content-end'>
-                        <Tooltip title="View"><i className="fas fa-eye mx-1" /></Tooltip>
+                        <Tooltip title="View"><i className="fas fa-eye mx-1" data-bs-toggle='modal' data-bs-target={`#view-loaned-items-${props.borrower._id}`} onClick={() => fetchLoanedItems(props.borrower.serviceNumber)} /></Tooltip>
                         <Tooltip title="Edit"><i className="fas fa-edit mx-1" data-bs-toggle='modal' data-bs-target={`#edit-borrower-modal-${props.borrower._id}`} onClick={setEditLoanCardModalTest} /></Tooltip>
                         <Tooltip title="Delete"><i className="fas fa-trash-alt delete-loan-card mx-1" onClick={() => deleteBorrower(props.borrower._id)} /></Tooltip>
                     </div>

@@ -1,0 +1,8 @@
+.heading-service-number {
+    font-style: italic;
+    color: rgb(128, 128, 128);
+}
+
+.view-loaned-items .btn-return {
+    text-align: center;
+}
