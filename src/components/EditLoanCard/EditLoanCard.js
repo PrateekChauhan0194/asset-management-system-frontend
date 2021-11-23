@@ -24,6 +24,27 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
     };
 
     const updateBorrower = async () => {
+        const loanedItems = await getLoanedItems(borrower.serviceNumber);
+
+        // Update all the found items' service number property to the new service number
+        loanedItems.forEach(async (item) => {
+            // Call updateItem API
+            const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    serviceNumber: serviceNumber,
+                    name: item.name,
+                    serialNumber: item.serialNumber,
+                    model: item.model,
+                    gigNumber: item.gigNumber,
+                }),
+            });
+        });
+
+        // Update the borrower's service number property to the new service number
         const response = await fetch(`${API_HOST}/api/v1/borrower/update/${borrower._id}`, {
             method: 'PUT',
             headers: {
@@ -42,6 +63,14 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
             setBorrowers(await getBorrowers());
         } else {
             toast.error(data.errors[0].msg);
+        }
+    };
+
+    const getLoanedItems = async (serviceNumber) => {
+        const response = await fetch(`${API_HOST}/api/v1/item/getItems/${serviceNumber}`);
+        const data = await response.json();
+        if (!data.errors) {
+            return data;
         }
     };
 
