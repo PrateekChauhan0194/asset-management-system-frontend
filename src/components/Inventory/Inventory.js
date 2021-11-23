@@ -87,7 +87,7 @@ const Inventory = () => {
                                     <th scope="col">Serial Number</th>
                                     <th scope="col">Model</th>
                                     <th scope="col">Gig Number</th>
-                                    <th scope="col">Data Creation Date</th>
+                                    <th scope="col">Added or Returned on</th>
                                     <th scope="col">Delete</th>
                                     <th scope="col">Issue item</th>
                                 </tr>

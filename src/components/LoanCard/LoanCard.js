@@ -54,7 +54,7 @@ const LoanCard = (props) => {
     return (
         <>
             <EditLoanCard borrower={props.borrower} setBorrowers={props.setBorrowers} />
-            <LoanedItems borrower={props.borrower} loanedItems={loanedItems} />
+            <LoanedItems borrower={props.borrower} loanedItems={loanedItems} setLoanedItems={setLoanedItems} fetchLoanedItems={fetchLoanedItems} />
             <Card text='dark' className='m-2 loan-card' style={{ width: '18rem' }}>
                 <Card.Body>
                     <Card.Title>{props.borrower.rank} {props.borrower.fullName}</Card.Title>

@@ -2,9 +2,49 @@ import './LoanedItems.css';
 import React from 'react';
 import { Tooltip, Typography } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
+import { API_HOST } from '../../config';
+import { toast } from 'react-toastify';
 
-const LoanedItems = ({ borrower, loanedItems }) => {
+const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }) => {
     const hasLoanedItems = loanedItems.length > 0;
+
+    const returnItem = async (id) => {
+        const response = await fetch(`${API_HOST}/api/v1/item/getItem/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const item = await response.json();
+        if (!item.errors) {
+            // eslint-disable-next-line
+            const confirmReturn = confirm('This item will be returned to the inventory. Confirm return?');
+            if (confirmReturn) {
+                const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        serviceNumber: 'inventory',
+                        name: item.name,
+                        serialNumber: item.serialNumber,
+                        model: item.model,
+                        gigNumber: item.gigNumber,
+                    }),
+                });
+                const data = await response.json();
+                if (!data.errors) {
+                    alert('Item returned to the inventory');
+                    toast.success('Item returned to the inventory');
+                    await fetchLoanedItems(borrower.serviceNumber);
+                }
+            }
+        } else {
+            toast.error('Error returning item to the inventory.');
+        }
+    };
+
     return (
         <>
             <div className='modal fade' id={`view-loaned-items-${borrower._id}`} data-bs-backdrop='static' data-bs-keyboard='false' tabIndex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -35,7 +75,7 @@ const LoanedItems = ({ borrower, loanedItems }) => {
                                                 <td>{loanedItem.serialNumber}</td>
                                                 <td>{loanedItem.model}</td>
                                                 <td>{new Date(loanedItem.dataCreationDate).toDateString()}</td>
-                                                <td className='btn-return'><Tooltip title='Return item' placement='right' TransitionComponent={Zoom}><i className='fas fa-undo-alt' /></Tooltip></td>
+                                                <td className='btn-return'><Tooltip title='Return item' placement='right' TransitionComponent={Zoom}><i className='fas fa-undo-alt' onClick={() => returnItem(loanedItem._id)} /></Tooltip></td>
                                             </tr>
                                         ))}
                                     </tbody>
