@@ -19,4 +19,10 @@ const getInventoryItems = async () => {
     return data;
 }
 
-export { getBorrowers, getBorrower, getInventoryItems };
+const getAllItems = async () => {
+    const response = await fetch(`${API_HOST}/api/v1/item/getAll`);
+    const data = await response.json();
+    return data;
+}
+
+export { getBorrowers, getBorrower, getInventoryItems, getAllItems };
