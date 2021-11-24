@@ -215,32 +215,40 @@ const Dashboard = () => {
                 <div className="container dashboard">
                     <Typography variant="h2" gutterBottom className='mt-5'>Dashboard</Typography>
 
-                    {/* Display totalAssetsData */}
-                    <div cssName="dashboard--total-assets">
-                        <Typography variant="h3" gutterBottom className='mt-5'>Total Assets: {totalAssets}</Typography>
-                        <div className='mt-3'>
-                            {getDataToDisplay(totalAssetsData)}
+
+
+                    <div className="accordion accordion-flush" id="dashboard--assets-accordion">
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="flush-headingOne">
+                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Total Assets: {totalAssets}
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#dashboard--assets-accordion">
+                                <div className="accordion-body">{getDataToDisplay(totalAssetsData)}</div>
+                            </div>
+                        </div>
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="flush-headingTwo">
+                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    Inventory Assets: {totalInventoryAssets}
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#dashboard--assets-accordion">
+                                <div className="accordion-body">{getDataToDisplay(inventoryAssetsData)}</div>
+                            </div>
+                        </div>
+                        <div className="accordion-item">
+                            <h2 className="accordion-header" id="flush-headingThree">
+                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                    Loaned Assets: {totalLoanedAssets}
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#dashboard--assets-accordion">
+                                <div className="accordion-body">{getDataToDisplay(loanedAssetsData)}</div>
+                            </div>
                         </div>
                     </div>
-
-
-                    {/* Display inventoryAssetsData */}
-                    <div cssName="dashboard--inventory-assets">
-                        <Typography variant="h3" gutterBottom className='mt-5'>Inventory Assets: {totalInventoryAssets}</Typography>
-                        <div className='mt-3'>
-                            {getDataToDisplay(inventoryAssetsData)}
-                        </div>
-                    </div>
-
-
-                    {/* Display loanedAssetsData */}
-                    <div cssName="dashboard--loaned-assets">
-                        <Typography variant="h3" gutterBottom className='mt-5'>Loaned Assets: {totalLoanedAssets}</Typography>
-                        <div className='mt-3'>
-                            {getDataToDisplay(loanedAssetsData)}
-                        </div>
-                    </div>
-
 
 
                     <Typography variant="h3" gutterBottom className='mt-5'>Defects</Typography>
@@ -248,9 +256,7 @@ const Dashboard = () => {
                     Error while trying to edit the loan card with no change.
 
                     <Typography variant="h3" gutterBottom className='mt-5'>Todo</Typography>
-                    Change password feature <br />
-
-                    <br />
+                    Change password feature
                 </div>
             </>
         ) : (

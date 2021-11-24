@@ -1,3 +1,10 @@
 .dashboard .table {
-    width: 50vw;
+    width: 100%;
+}
+
+/* Apply translucent background to the accordion component */
+.dashboard .accordion {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
 }
