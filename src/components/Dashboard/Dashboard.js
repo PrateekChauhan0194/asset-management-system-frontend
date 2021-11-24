@@ -193,7 +193,6 @@ const Dashboard = () => {
                                         <div key={index} className="mt-3">
                                             <div>
                                                 <Typography variant="h5" gutterBottom className='dashboard--total-assets--name'>{objKey}</Typography>
-                                                {/* Display as bootstrap table */}
                                                 <table className="table table-striped mb-5">
                                                     <thead>
                                                         <tr>
@@ -233,7 +232,6 @@ const Dashboard = () => {
                                         <div key={index} className="mt-3">
                                             <div>
                                                 <Typography variant="h5" gutterBottom className='dashboard--inventory-assets--name'>{objKey}</Typography>
-                                                {/* Display as bootstrap table */}
                                                 <table className="table table-striped mb-5">
                                                     <thead>
                                                         <tr>
@@ -273,7 +271,6 @@ const Dashboard = () => {
                                         <div key={index} className="mt-3">
                                             <div>
                                                 <Typography variant="h5" gutterBottom className='dashboard--loaned-assets--name'>{objKey}</Typography>
-                                                {/* Display as bootstrap table */}
                                                 <table className="table table-striped mb-5">
                                                     <thead>
                                                         <tr>
