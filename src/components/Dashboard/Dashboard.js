@@ -9,7 +9,6 @@ const Dashboard = () => {
     const [totalAssets, setTotalAssets] = React.useState(0);
     const [totalInventoryAssets, setTotalInventoryAssets] = React.useState(0);
     const [totalLoanedAssets, setTotalLoanedAssets] = React.useState(0);
-    const [uniqueItemNames, setUniqueItemNames] = React.useState([]);
 
     const [totalAssetsData, setTotalAssetsData] = React.useState(null);
     const [inventoryAssetsData, setInventoryAssetsData] = React.useState(null);
@@ -18,7 +17,6 @@ const Dashboard = () => {
     // eslint-disable-next-line
     useEffect(async () => {
         await setItemCounts();
-        setUniqueItemNames(await getUniqueItemNames());
         setTotalAssetsData(await getTotalAssetsData());
         setInventoryAssetsData(await getInventoryAssetsData());
         setLoanedAssetsData(await getLoanedAssetsData());
