@@ -94,17 +94,15 @@ const Inventory = () => {
                             </thead>
                             <tbody>
                                 {inventoryItems.map((inventoryItem, index) => (
-                                    <>
-                                        <tr key={index}>
-                                            <td>{inventoryItem.name}</td>
-                                            <td>{inventoryItem.serialNumber}</td>
-                                            <td>{inventoryItem.model}</td>
-                                            <td>{inventoryItem.gigNumber}</td>
-                                            <td>{new Date(inventoryItem.dataCreationDate).toDateString()}</td>
-                                            <td><i className="fas fa-trash-alt delete-inventory-item mx-1" onClick={() => deleteItem(inventoryItem._id)} /></td>
-                                            <td><i className="fas fa-exchange-alt issue-inventory-item mx-1" onClick={() => issueItem(inventoryItem._id)} /></td>
-                                        </tr>
-                                    </>
+                                    <tr key={index}>
+                                        <td>{inventoryItem.name}</td>
+                                        <td>{inventoryItem.serialNumber}</td>
+                                        <td>{inventoryItem.model}</td>
+                                        <td>{inventoryItem.gigNumber}</td>
+                                        <td>{new Date(inventoryItem.dataCreationDate).toDateString()}</td>
+                                        <td><i className="fas fa-trash-alt delete-inventory-item mx-1" onClick={() => deleteItem(inventoryItem._id)} /></td>
+                                        <td><i className="fas fa-exchange-alt issue-inventory-item mx-1" onClick={() => issueItem(inventoryItem._id)} /></td>
+                                    </tr>
                                 ))}
                             </tbody>
                         </table>
