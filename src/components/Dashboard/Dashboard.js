@@ -33,13 +33,6 @@ const Dashboard = () => {
         setTotalLoanedAssets(loanedItems.length);
     }
 
-    const getUniqueItemNames = async () => {
-        const items = await getAllItems();
-        const itemNames = items.map(item => item.name);
-        const uniqueItemNames = [...new Set(itemNames)];
-        return uniqueItemNames;
-    }
-
     const getTotalAssetsData = async () => {
         const items = await getAllItems();
         const itemNames = items.map(item => item.name);
