@@ -176,6 +176,38 @@ const Dashboard = () => {
         return loanedAssetsData;
     }
 
+    const getDataToDisplay = (data) => {
+        return (data && Object.keys(data).map((objKey, index) => {
+            return (
+                <div key={index} className="mt-3">
+                    <div>
+                        <Typography variant="h5" gutterBottom className='dashboard--assets--name'>{objKey}</Typography>
+                        <table className="table table-striped mb-5">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Model</th>
+                                    <th scope="col">Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    Object.keys(data[objKey]).map((modelKey, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{modelKey}</td>
+                                                <td>{data[objKey][modelKey]}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )
+        }))
+    }
+
     return (
         isLoggedIn() ? (
             <>
@@ -187,37 +219,7 @@ const Dashboard = () => {
                     <div cssName="dashboard--total-assets">
                         <Typography variant="h3" gutterBottom className='mt-5'>Total Assets: {totalAssets}</Typography>
                         <div className='mt-3'>
-                            {
-                                totalAssetsData && Object.keys(totalAssetsData).map((objKey, index) => {
-                                    return (
-                                        <div key={index} className="mt-3">
-                                            <div>
-                                                <Typography variant="h5" gutterBottom className='dashboard--total-assets--name'>{objKey}</Typography>
-                                                <table className="table table-striped mb-5">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Model</th>
-                                                            <th scope="col">Count</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {
-                                                            Object.keys(totalAssetsData[objKey]).map((modelKey, index) => {
-                                                                return (
-                                                                    <tr key={index}>
-                                                                        <td>{modelKey}</td>
-                                                                        <td>{totalAssetsData[objKey][modelKey]}</td>
-                                                                    </tr>
-                                                                )
-                                                            })
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
+                            {getDataToDisplay(totalAssetsData)}
                         </div>
                     </div>
 
@@ -226,37 +228,7 @@ const Dashboard = () => {
                     <div cssName="dashboard--inventory-assets">
                         <Typography variant="h3" gutterBottom className='mt-5'>Inventory Assets: {totalInventoryAssets}</Typography>
                         <div className='mt-3'>
-                            {
-                                inventoryAssetsData && Object.keys(inventoryAssetsData).map((objKey, index) => {
-                                    return (
-                                        <div key={index} className="mt-3">
-                                            <div>
-                                                <Typography variant="h5" gutterBottom className='dashboard--inventory-assets--name'>{objKey}</Typography>
-                                                <table className="table table-striped mb-5">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Model</th>
-                                                            <th scope="col">Count</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {
-                                                            Object.keys(inventoryAssetsData[objKey]).map((modelKey, index) => {
-                                                                return (
-                                                                    <tr key={index}>
-                                                                        <td>{modelKey}</td>
-                                                                        <td>{inventoryAssetsData[objKey][modelKey]}</td>
-                                                                    </tr>
-                                                                )
-                                                            })
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
+                            {getDataToDisplay(inventoryAssetsData)}
                         </div>
                     </div>
 
@@ -265,37 +237,7 @@ const Dashboard = () => {
                     <div cssName="dashboard--loaned-assets">
                         <Typography variant="h3" gutterBottom className='mt-5'>Loaned Assets: {totalLoanedAssets}</Typography>
                         <div className='mt-3'>
-                            {
-                                loanedAssetsData && Object.keys(loanedAssetsData).map((objKey, index) => {
-                                    return (
-                                        <div key={index} className="mt-3">
-                                            <div>
-                                                <Typography variant="h5" gutterBottom className='dashboard--loaned-assets--name'>{objKey}</Typography>
-                                                <table className="table table-striped mb-5">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Model</th>
-                                                            <th scope="col">Count</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {
-                                                            Object.keys(loanedAssetsData[objKey]).map((modelKey, index) => {
-                                                                return (
-                                                                    <tr key={index}>
-                                                                        <td>{modelKey}</td>
-                                                                        <td>{loanedAssetsData[objKey][modelKey]}</td>
-                                                                    </tr>
-                                                                )
-                                                            })
-                                                        }
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            }
+                            {getDataToDisplay(loanedAssetsData)}
                         </div>
                     </div>
 
