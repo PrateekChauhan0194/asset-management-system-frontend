@@ -243,9 +243,6 @@ const Dashboard = () => {
 
 
                     <Typography variant="h3" gutterBottom className='mt-5'>Defects</Typography>
-                    Should not issue item if the loan card with entered service number does not exist <br />
-                    Error while trying to edit the loan card with no change.
-
                     <Typography variant="h3" gutterBottom className='mt-5'>Todo</Typography>
                     Change password feature
                 </div>

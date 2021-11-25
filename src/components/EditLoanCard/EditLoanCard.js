@@ -13,7 +13,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
 
     const getRankValue = () => document.getElementById(`editRank-${borrower._id}`).value;
     const getFullNameValue = () => document.getElementById(`editFullName-${borrower._id}`).value;
-    const getServiceNumberValue = () => document.getElementById(`editServiceNumber-${borrower._id}`).value;
+    const getServiceNumberValue = () => (document.getElementById(`editServiceNumber-${borrower._id}`).value).trim();
     const getDepartmentValue = () => document.getElementById(`editDepartment-${borrower._id}`).value;
 
     const onChange = async (e) => {

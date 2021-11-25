@@ -6,6 +6,10 @@ import { FormControl, InputLabel, Input, Button, Typography } from '@mui/materia
 import { getBorrowers } from '../../services/APIComms';
 
 const AddLoanCard = ({ setBorrowers }) => {
+
+    const handleOnServiceNumberChange = (e) => {
+        document.getElementById('form-add-loan-card--text-service-number').value = e.target.value.trim();
+    }
     const addNewLoanCard = async (e) => {
         e.preventDefault();
 
@@ -16,7 +20,7 @@ const AddLoanCard = ({ setBorrowers }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                serviceNumber: document.getElementById('form-add-loan-card--text-service-number').value,
+                serviceNumber: (document.getElementById('form-add-loan-card--text-service-number').value).trim(),
                 rank: document.getElementById('form-add-loan-card--text-rank').value,
                 fullName: document.getElementById('form-add-loan-card--text-full-name').value,
                 department: document.getElementById('form-add-loan-card--text-department').value,
@@ -52,7 +56,7 @@ const AddLoanCard = ({ setBorrowers }) => {
                         <div className="form-group my-4">
                             <FormControl fullWidth>
                                 <InputLabel htmlFor="service-number">Service Number</InputLabel>
-                                <Input id="form-add-loan-card--text-service-number" aria-describedby="text-service-number" />
+                                <Input id="form-add-loan-card--text-service-number" aria-describedby="text-service-number" onChange={handleOnServiceNumberChange} />
                             </FormControl>
                         </div>
                         <div className="form-group my-4">
