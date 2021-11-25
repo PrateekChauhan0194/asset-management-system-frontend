@@ -62,6 +62,8 @@ const Inventory = () => {
                     alert(`Item issued to person with service number ${serviceNumber}`);
                     toast.success('Item issued successfully');
                     setInventoryItems(await getInventoryItems());
+                } else {
+                    toast.error(data.errors[0].msg);
                 }
             }
         } else {
