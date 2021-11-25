@@ -45,6 +45,43 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
         }
     };
 
+    const handlePrint = () => {
+        const printContents = document.querySelector('#view-loaned-items-61939678218024c2d2953fc1 .modal-body').innerHTML;
+        console.log(printContents);
+        const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+        popupWin.document.open();
+        popupWin.document.write(`
+            <html>
+                <head>
+                    <title>Loan card - ${borrower.serviceNumber}</title>
+                    <style>
+                        @media print {
+                            @page {
+                                size: landscape;
+                            }
+                            .page-break {
+                                page-break-after: always;
+                            }
+                        }
+                    </style>
+                </head>
+                <body onload="window.print();window.close()">
+                        <hr/>
+                        <h4>Loan card</h4>
+                        <hr/>
+                        <h5>Service number: ${borrower.serviceNumber}</h5>
+                        <h5>Rank: ${borrower.rank}</h5>
+                        <h5>Name: ${borrower.fullName}</h5>
+                        <h5>Department: ${borrower.department}</h5>
+                        <hr/>
+                        <div>${printContents}</div>
+                        <hr/>
+                </body>
+            </html>
+        `);
+        popupWin.document.close();
+    };
+
     return (
         <>
             <div className='modal fade' id={`view-loaned-items-${borrower._id}`} data-bs-backdrop='static' data-bs-keyboard='false' tabIndex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -55,7 +92,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                 className='modal-title'
                                 id='edit-borrower-modal_title'>
                                 <b>Loaned items</b> - {borrower.rank} {borrower.fullName} <span className='heading-service-number'>[{borrower.serviceNumber}] </span>
-                                <button className="btn btn-sm btn-outline-secondary" ><i className="fas fa-print" /> Print</button>
+                                <button className="btn btn-sm btn-outline-secondary" onClick={handlePrint}><i className="fas fa-print" /> Print</button>
                                 {/* onClick={() => window.print()} */}
                             </h5>
                             <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
@@ -67,8 +104,8 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                         <tr>
                                             <th>GIG Number</th>
                                             <th>Item name</th>
-                                            <th>Item serial number</th>
                                             <th>Item model</th>
+                                            <th>Item serial number</th>
                                             <th>Loaned on</th>
                                             <th>Return to inventory</th>
                                         </tr>
@@ -78,8 +115,8 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                             <tr key={loanedItem._id}>
                                                 <td>{loanedItem.gigNumber}</td>
                                                 <td>{loanedItem.name}</td>
-                                                <td>{loanedItem.serialNumber}</td>
                                                 <td>{loanedItem.model}</td>
+                                                <td>{loanedItem.serialNumber}</td>
                                                 <td>{new Date(loanedItem.dataCreationDate).toDateString()}</td>
                                                 <td className='btn-return'><Tooltip title='Return item' placement='right' TransitionComponent={Zoom}><i className='fas fa-undo-alt' onClick={() => returnItem(loanedItem._id)} /></Tooltip></td>
                                             </tr>
