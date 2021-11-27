@@ -9,7 +9,6 @@ const LandingPage = () => {
     const checkUserExists = async () => {
         const response = await fetch(`${API_HOST}/api/v1/auth/check`);
         const data = await response.json();
-        console.log(data.userExists);
         setUserExists(data.userExists);
     }
 

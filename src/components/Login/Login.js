@@ -1,8 +1,6 @@
 import './Login.css';
 import React from 'react';
-import bcrypt from 'bcryptjs';
-import { toast } from 'react-toastify';
-import { login, logout } from '../../services/AuthService';
+import { login } from '../../services/AuthService';
 
 const doLogin = async (e) => {
     e.preventDefault();
@@ -10,23 +8,25 @@ const doLogin = async (e) => {
     const username = document.getElementsByName('username')[0].value;
     const password = document.getElementsByName('password')[0].value;
 
-    // const securePassword = await bcrypt.hash('A$$etSecPass', bcrypt.genSaltSync(10));
-    const securePassword = '$2a$10$KbuWuI4W0zkKBWV8cpx1x.5SSMJ.hKNw7m05utB1xku8JhpqhSzay';
-    const isPasswordCorrect = await bcrypt.compare(password, securePassword);
-    if (isPasswordCorrect && username === 'admin') {
-        login();
-        window.location.href = '/dashboard';
-    } else {
-        toast.error('Incorrect username or password!', {
-            position: toast.POSITION.TOP_RIGHT,
-            hideProgressBar: true
-        });
-        logout();
-    }
+    // // const securePassword = await bcrypt.hash('A$$etSecPass', bcrypt.genSaltSync(10));
+    // const securePassword = '$2a$10$KbuWuI4W0zkKBWV8cpx1x.5SSMJ.hKNw7m05utB1xku8JhpqhSzay';
+    // const isPasswordCorrect = await bcrypt.compare(password, securePassword);
+    // if (isPasswordCorrect && username === 'admin') {
+    //     login();
+    //     window.location.href = '/dashboard';
+    // } else {
+    //     toast.error('Incorrect username or password!', {
+    //         position: toast.POSITION.TOP_RIGHT,
+    //         hideProgressBar: true
+    //     });
+    //     logout();
+    // }
+
+    await login(username, password);
 }
 
 const Login = () => {
-    logout();
+    // logout();
     return (
         <>
             <div className="container login-container">

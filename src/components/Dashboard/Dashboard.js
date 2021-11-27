@@ -1,18 +1,18 @@
 import './Dashboard.css';
 import { Typography } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { isLoggedIn } from '../../services/AuthService';
 import Navbar from '../Navbar/Navbar';
 import { getAllItems } from '../../services/APIComms';
 
 const Dashboard = () => {
-    const [totalAssets, setTotalAssets] = React.useState(0);
-    const [totalInventoryAssets, setTotalInventoryAssets] = React.useState(0);
-    const [totalLoanedAssets, setTotalLoanedAssets] = React.useState(0);
+    const [totalAssets, setTotalAssets] = useState(0);
+    const [totalInventoryAssets, setTotalInventoryAssets] = useState(0);
+    const [totalLoanedAssets, setTotalLoanedAssets] = useState(0);
 
-    const [totalAssetsData, setTotalAssetsData] = React.useState(null);
-    const [inventoryAssetsData, setInventoryAssetsData] = React.useState(null);
-    const [loanedAssetsData, setLoanedAssetsData] = React.useState(null);
+    const [totalAssetsData, setTotalAssetsData] = useState(null);
+    const [inventoryAssetsData, setInventoryAssetsData] = useState(null);
+    const [loanedAssetsData, setLoanedAssetsData] = useState(null);
 
     // eslint-disable-next-line
     useEffect(async () => {
