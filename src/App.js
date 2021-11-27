@@ -5,11 +5,11 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Login from './components/Login/Login';
 import { ToastContainer } from 'react-toastify';
 import Dashboard from './components/Dashboard/Dashboard';
 import LoanCards from './components/LoanCards/LoanCards';
 import Inventory from './components/Inventory/Inventory';
+import LandingPage from './components/Landing/Landing';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <ToastContainer hideProgressBar='true' />
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/loan-cards" element={<LoanCards />} />
