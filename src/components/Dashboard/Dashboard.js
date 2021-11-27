@@ -243,6 +243,7 @@ const Dashboard = () => {
 
 
                     <Typography variant="h3" gutterBottom className='mt-5'>Defects</Typography>
+                    Print loan card feature
                     <Typography variant="h3" gutterBottom className='mt-5'>Todo</Typography>
                     Change password feature
                 </div>
