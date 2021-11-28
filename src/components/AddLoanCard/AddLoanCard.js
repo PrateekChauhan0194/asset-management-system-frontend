@@ -13,7 +13,6 @@ const AddLoanCard = ({ setBorrowers }) => {
     const addNewLoanCard = async (e) => {
         e.preventDefault();
 
-        // Call /add post endpoint to add a new borrower    
         const response = await fetch(`${API_HOST}/api/v1/borrower/add`, {
             method: 'POST',
             headers: {
