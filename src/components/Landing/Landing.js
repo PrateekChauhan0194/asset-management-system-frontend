@@ -1,4 +1,3 @@
-import './Landing.css';
 import React, { useEffect } from 'react';
 import Login from '../Login/Login';
 import { API_HOST } from '../../config';

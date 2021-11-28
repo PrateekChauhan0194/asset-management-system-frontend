@@ -1,4 +1,3 @@
-import './EditLoanCard.css';
 import React from 'react';
 import { getBorrowers } from '../../services/APIComms';
 import { API_HOST } from '../../config';
