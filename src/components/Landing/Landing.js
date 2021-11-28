@@ -15,6 +15,7 @@ const LandingPage = () => {
     // eslint-disable-next-line
     useEffect(async () => {
         await checkUserExists();
+        localStorage.removeItem('auth_token');
         // eslint-disable-next-line
     }, []);
 
