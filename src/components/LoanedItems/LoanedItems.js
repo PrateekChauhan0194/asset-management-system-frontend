@@ -93,7 +93,6 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                 id='edit-borrower-modal_title'>
                                 <b>Loaned items</b> - {borrower.rank} {borrower.fullName} <span className='heading-service-number'>[{borrower.serviceNumber}] </span>
                                 <button className="btn btn-sm btn-outline-secondary" onClick={handlePrint}><i className="fas fa-print" /> Print</button>
-                                {/* onClick={() => window.print()} */}
                             </h5>
                             <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                         </div>

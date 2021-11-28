@@ -71,6 +71,38 @@ const Inventory = () => {
         }
     };
 
+    const handlePrint = async () => {
+        const printContents = document.querySelector(`div.container-inventory-item-list div.print-container`).innerHTML;
+        const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+        popupWin.document.open();
+        popupWin.document.write(`
+            <html>
+                <head>
+                    <title>Items in inventory</title>
+                    <style>
+                        @media print {
+                            @page {
+                                size: landscape;
+                                margin-top: 0mm;
+                            }
+                            .page-break {
+                                page-break-after: always;
+                            }
+                        }
+                    </style>
+                </head>
+                <body onload="window.print();window.close()">
+                        <hr/>
+                        <h2 style="text-align: center;">IT Inventory</h2>
+                        <hr/>
+                        <div>${printContents}</div>
+                        <hr/>
+                </body>
+            </html>
+        `);
+        popupWin.document.close();
+    };
+
     return (
         isLoggedIn() ? (
             <>
@@ -81,33 +113,38 @@ const Inventory = () => {
                         <Typography variant="h2" className="title-inventory-item-list mt-5">
                             Your inventory
                         </Typography>
+                        <div className="header d-flex justify-content-end">
+                            <button className="btn btn-outline-secondary" onClick={handlePrint}><i className="fas fa-print" /> Print</button>
+                        </div>
 
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Serial Number</th>
-                                    <th scope="col">Model</th>
-                                    <th scope="col">Gig Number</th>
-                                    <th scope="col">Added or Returned on</th>
-                                    <th scope="col">Delete</th>
-                                    <th scope="col">Issue item</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {inventoryItems.map((inventoryItem, index) => (
-                                    <tr key={index}>
-                                        <td>{inventoryItem.name}</td>
-                                        <td>{inventoryItem.serialNumber}</td>
-                                        <td>{inventoryItem.model}</td>
-                                        <td>{inventoryItem.gigNumber}</td>
-                                        <td>{new Date(inventoryItem.dataCreationDate).toDateString()}</td>
-                                        <td><i className="fas fa-trash-alt delete-inventory-item mx-1" onClick={() => deleteItem(inventoryItem._id)} /></td>
-                                        <td><i className="fas fa-exchange-alt issue-inventory-item mx-1" onClick={() => issueItem(inventoryItem._id)} /></td>
+                        <div className="print-container">
+                            <table className="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Serial Number</th>
+                                        <th scope="col">Model</th>
+                                        <th scope="col">Gig Number</th>
+                                        <th scope="col">Added or Returned on</th>
+                                        <th scope="col">Delete</th>
+                                        <th scope="col">Issue item</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {inventoryItems.map((inventoryItem, index) => (
+                                        <tr key={index}>
+                                            <td>{inventoryItem.name}</td>
+                                            <td>{inventoryItem.serialNumber}</td>
+                                            <td>{inventoryItem.model}</td>
+                                            <td>{inventoryItem.gigNumber}</td>
+                                            <td>{new Date(inventoryItem.dataCreationDate).toDateString()}</td>
+                                            <td><i className="fas fa-trash-alt delete-inventory-item mx-1" onClick={() => deleteItem(inventoryItem._id)} /></td>
+                                            <td><i className="fas fa-exchange-alt issue-inventory-item mx-1" onClick={() => issueItem(inventoryItem._id)} /></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </>
