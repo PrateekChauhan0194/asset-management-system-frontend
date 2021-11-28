@@ -37,7 +37,9 @@ const Navbar = () => {
                             </li>
                         </ul>
                         <form className="d-flex">
-                            <button className="btn btn-outline-success" onClick={() => logout()}>Logout</button>
+                            {/* eslint-disable-next-line */}
+                            <a className="btn btn-outline-success mx-2" data-bs-toggle='modal' data-bs-target='#change-password'>Change password</a>
+                            <button className="btn btn-outline-danger" onClick={() => logout()}>Logout</button>
                         </form>
                     </div>
                 </div>

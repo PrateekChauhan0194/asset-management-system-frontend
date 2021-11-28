@@ -10,11 +10,13 @@ import Dashboard from './components/Dashboard/Dashboard';
 import LoanCards from './components/LoanCards/LoanCards';
 import Inventory from './components/Inventory/Inventory';
 import LandingPage from './components/Landing/Landing';
+import ChangePassword from './components/ChangePassword/ChangePassword';
 
 function App() {
   return (
     <>
       <ToastContainer hideProgressBar='true' />
+      <ChangePassword />
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />

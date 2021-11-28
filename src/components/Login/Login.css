@@ -29,7 +29,7 @@ body {
 }
 
 /* Translucent background to the email and password inputs */
-.login-container input[type=text], input[type=password] {
+.login-container input[type=text], .login-container input[type=password] {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
