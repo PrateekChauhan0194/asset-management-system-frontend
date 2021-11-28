@@ -45,9 +45,8 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
         }
     };
 
-    const handlePrint = () => {
-        const printContents = document.querySelector('#view-loaned-items-61939678218024c2d2953fc1 .modal-body').innerHTML;
-        console.log(printContents);
+    const handlePrint = async () => {
+        const printContents = document.querySelector(`#view-loaned-items-${borrower._id} .modal-body`).innerHTML;
         const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
         popupWin.document.open();
         popupWin.document.write(`
@@ -58,6 +57,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                         @media print {
                             @page {
                                 size: landscape;
+                                margin-top: 0mm;
                             }
                             .page-break {
                                 page-break-after: always;
