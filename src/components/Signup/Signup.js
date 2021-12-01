@@ -28,12 +28,14 @@ const Signup = () => {
                 password,
             })
         });
+        const data = await response.json();
 
         if (response.status === 200) {
             toast.success('User created successfully!');
-            window.location.href = '/';
+            const auth_token = data.token;
+            localStorage.setItem('auth_token', auth_token);
+            window.location.href = '/dashboard';
         } else {
-            const data = await response.json();
             toast.error(data.msg);
         }
     }
