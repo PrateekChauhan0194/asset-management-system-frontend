@@ -60,8 +60,10 @@ const isLoggedIn = async () => {
     const data = await response.json();
     if (response.status === 200 && data !== null) {
         return true;
+    } else {
+        window.location.href = '/';
+        return false;
     }
-    return false;
 }
 
 export { login, logout, isLoggedIn };
