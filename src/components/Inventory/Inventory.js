@@ -72,6 +72,8 @@ const Inventory = () => {
     };
 
     const handlePrint = async () => {
+        const date = new Date();
+        const strDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
         const printContents = document.querySelector(`div.container-inventory-item-list div.print-container`).innerHTML;
         const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
         popupWin.document.open();
@@ -93,7 +95,7 @@ const Inventory = () => {
                 </head>
                 <body onload="window.print();window.close()">
                         <hr/>
-                        <h2 style="text-align: center;">IT Inventory</h2>
+                        <h2 style="text-align: center;">IT Inventory - ${strDate}</h2>
                         <hr/>
                         <div>${printContents}</div>
                         <hr/>

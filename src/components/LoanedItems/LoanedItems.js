@@ -46,6 +46,8 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
     };
 
     const handlePrint = async () => {
+        const date = new Date();
+        const strDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
         const printContents = document.querySelector(`#view-loaned-items-${borrower._id} .modal-body`).innerHTML;
         const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
         popupWin.document.open();
@@ -67,7 +69,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                 </head>
                 <body onload="window.print();window.close()">
                         <hr/>
-                        <h2 style="text-align: center;">Loan card</h2>
+                        <h2 style="text-align: center;">Loan card - ${strDate}</h2>
                         <hr/>
                         <h5>Service number: ${borrower.serviceNumber}</h5>
                         <h5>Rank: ${borrower.rank}</h5>
