@@ -67,7 +67,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                 </head>
                 <body onload="window.print();window.close()">
                         <hr/>
-                        <h4>Loan card</h4>
+                        <h2 style="text-align: center;">Loan card</h2>
                         <hr/>
                         <h5>Service number: ${borrower.serviceNumber}</h5>
                         <h5>Rank: ${borrower.rank}</h5>
