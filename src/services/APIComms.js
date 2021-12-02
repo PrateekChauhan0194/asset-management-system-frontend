@@ -19,8 +19,14 @@ const getBorrower = async (id) => {
 }
 
 const getInventoryItems = async () => {
+    const auth_token = localStorage.getItem('auth_token');
     const defaultServiceNumber = 'inventory';
-    const response = await fetch(`${API_HOST}/api/v1/item/getItems/${defaultServiceNumber}`);
+    const response = await fetch(`${API_HOST}/api/v1/item/getItems/${defaultServiceNumber}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'auth_token': auth_token
+        }
+    });
     const data = await response.json();
     return data;
 }

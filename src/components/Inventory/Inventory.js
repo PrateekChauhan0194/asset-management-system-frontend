@@ -18,7 +18,14 @@ const Inventory = () => {
     const [inventoryItems, setInventoryItems] = useState([]);
     // eslint-disable-next-line
     useEffect(async () => {
-        setInventoryItems(await getInventoryItems());
+        const data = await getInventoryItems();
+        if (!data.error) {
+            setInventoryItems(data);
+        } else {
+            toast.info('Login to continue');
+            navigate('/');
+        }
+
         // eslint-disable-next-line
     }, []);
 
