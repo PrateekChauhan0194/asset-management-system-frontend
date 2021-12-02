@@ -5,6 +5,7 @@ import { isLoggedIn } from '../../services/AuthService';
 import Navbar from '../Navbar/Navbar';
 import { getAllItems } from '../../services/APIComms';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const Dashboard = () => {
     const [totalAssets, setTotalAssets] = useState(0);
@@ -36,6 +37,7 @@ const Dashboard = () => {
             setTotalInventoryAssets(inventoryItems.length);
             setTotalLoanedAssets(loanedItems.length);
         } else {
+            toast.info('Login to continue');
             navigate('/');
         }
     }
