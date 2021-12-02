@@ -2,6 +2,7 @@ import './Login.css';
 import React from 'react';
 import { login } from '../../services/AuthService';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -11,6 +12,8 @@ const Login = () => {
         const username = document.getElementsByName('username')[0].value;
         const password = document.getElementsByName('password')[0].value;
         await login(username, password) && navigate('/dashboard');
+        toast.dismiss();
+        setTimeout(() => toast.success('Login successful, Welcome!'), 500);
     }
 
 

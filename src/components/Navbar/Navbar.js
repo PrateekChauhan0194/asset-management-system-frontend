@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../services/AuthService';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const isDashboard = () => {
     return window.location.pathname === '/dashboard';
@@ -44,6 +45,8 @@ const Navbar = () => {
                             <button className="btn btn-outline-danger" onClick={() => {
                                 logout();
                                 navigate('/');
+                                toast.dismiss();
+                                setTimeout(() => toast.success('Logged out successfully'), 500);
                             }}>Logout</button>
                         </form>
                     </div>
