@@ -247,7 +247,7 @@ const Dashboard = () => {
 
 
                     <Typography variant="h3" gutterBottom className='mt-5'>Defects</Typography>
-                    Print loan card feature
+                    Unable to update loancard if items are issued to it.
                     <Typography variant="h3" gutterBottom className='mt-5'>Todo</Typography>
                     Number of loaned items for each loancard
                 </div>

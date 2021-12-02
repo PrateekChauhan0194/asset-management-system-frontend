@@ -7,6 +7,9 @@ import { toast } from 'react-toastify';
 import { getBorrowers } from '../../services/APIComms';
 import EditLoanCard from '../EditLoanCard/EditLoanCard';
 import LoanedItems from '../LoanedItems/LoanedItems';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const LoanCard = (props) => {
 
@@ -61,9 +64,9 @@ const LoanCard = (props) => {
                     <Card.Subtitle className='mb-2 text-muted'>Service No: {props.borrower.serviceNumber}</Card.Subtitle>
                     <Card.Text>Section: {props.borrower.department}</Card.Text>
                     <div className='controls my-2 d-flex justify-content-end'>
-                        <Tooltip title="View"><i className="fas fa-eye mx-1" data-bs-toggle='modal' data-bs-target={`#view-loaned-items-${props.borrower._id}`} onClick={() => fetchLoanedItems(props.borrower.serviceNumber)} /></Tooltip>
-                        <Tooltip title="Edit"><i className="fas fa-edit mx-1" data-bs-toggle='modal' data-bs-target={`#edit-borrower-modal-${props.borrower._id}`} onClick={setEditLoanCardModalTest} /></Tooltip>
-                        <Tooltip title="Delete"><i className="fas fa-trash-alt delete-loan-card mx-1" onClick={() => deleteBorrower(props.borrower._id)} /></Tooltip>
+                        <span className='btn-view'><Tooltip title="View" placement='top'><VisibilityIcon data-bs-toggle='modal' data-bs-target={`#view-loaned-items-${props.borrower._id}`} onClick={() => fetchLoanedItems(props.borrower.serviceNumber)} /></Tooltip></span>
+                        <span className='btn-edit'><Tooltip title="Edit" placement='top'><EditIcon data-bs-toggle='modal' data-bs-target={`#edit-borrower-modal-${props.borrower._id}`} onClick={setEditLoanCardModalTest} /></Tooltip></span>
+                        <span className='btn-delete'><Tooltip title="Delete" placement='top'><DeleteIcon onClick={() => deleteBorrower(props.borrower._id)} /></Tooltip></span>
                     </div>
                     <Card.Footer><small><b>Created on:</b> {new Date(props.borrower.dataCreationDate).toDateString()}</small></Card.Footer>
                 </Card.Body>

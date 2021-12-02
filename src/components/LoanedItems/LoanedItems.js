@@ -4,6 +4,8 @@ import { Tooltip, Typography } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
 import { API_HOST } from '../../config';
 import { toast } from 'react-toastify';
+import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
+import PrintIcon from '@mui/icons-material/Print';
 
 const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }) => {
     const hasLoanedItems = loanedItems.length > 0;
@@ -94,7 +96,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                 className='modal-title'
                                 id='edit-borrower-modal_title'>
                                 <b>Loaned items</b> - {borrower.rank} {borrower.fullName} <span className='heading-service-number'>[{borrower.serviceNumber}] </span>
-                                <button className="btn btn-sm btn-outline-secondary" onClick={handlePrint}><i className="fas fa-print" /> Print</button>
+                                <button className="btn btn-sm btn-outline-secondary" onClick={handlePrint}><PrintIcon /> Print</button>
                             </h5>
                             <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                         </div>
@@ -119,7 +121,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                                 <td>{loanedItem.model}</td>
                                                 <td>{loanedItem.serialNumber}</td>
                                                 <td>{new Date(loanedItem.dataCreationDate).toDateString()}</td>
-                                                <td className='btn-return'><Tooltip title='Return item' placement='right' TransitionComponent={Zoom}><i className='fas fa-undo-alt' onClick={() => returnItem(loanedItem._id)} /></Tooltip></td>
+                                                <td className='btn-return'><Tooltip title='Return item' placement='right' TransitionComponent={Zoom}><SettingsBackupRestoreIcon onClick={() => returnItem(loanedItem._id)} /></Tooltip></td>
                                             </tr>
                                         ))}
                                     </tbody>

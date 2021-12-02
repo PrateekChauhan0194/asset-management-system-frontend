@@ -1,19 +1,15 @@
-i {
+svg {
     cursor: pointer;
 }
 
-.fas {
-    text-decoration: none;
-}
-
-.fa-trash-alt:hover, .fa-undo-alt:hover {
+td.btn-delete-inventory-item svg:hover, .btn-delete svg:hover, .btn-return svg:hover {
     color: red;
 }
 
-.fa-edit:hover {
+.loan-card .btn-edit svg:hover {
     color: blue;
 }
 
-.fa-eye:hover, .fa-exchange-alt:hover {
+td.btn-issue-inventory-item svg:hover, .loan-card .btn-view svg:hover {
     color: green;
 }

@@ -7,6 +7,9 @@ import { Typography } from '@mui/material';
 import { API_HOST } from '../../config';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import PrintIcon from '@mui/icons-material/Print';
 
 const Inventory = () => {
     const navigate = useNavigate();
@@ -119,7 +122,7 @@ const Inventory = () => {
                             Your inventory
                         </Typography>
                         <div className="header d-flex justify-content-end">
-                            <button className="btn btn-outline-secondary" onClick={handlePrint}><i className="fas fa-print" /> Print</button>
+                            <button className="btn btn-outline-secondary" onClick={handlePrint}><PrintIcon /> Print</button>
                         </div>
 
                         <div className="print-container">
@@ -143,8 +146,8 @@ const Inventory = () => {
                                             <td>{inventoryItem.model}</td>
                                             <td>{inventoryItem.gigNumber}</td>
                                             <td>{new Date(inventoryItem.dataCreationDate).toDateString()}</td>
-                                            <td><i className="fas fa-trash-alt delete-inventory-item mx-1" onClick={() => deleteItem(inventoryItem._id)} /></td>
-                                            <td><i className="fas fa-exchange-alt issue-inventory-item mx-1" onClick={() => issueItem(inventoryItem._id)} /></td>
+                                            <td className='btn-delete-inventory-item'><DeleteIcon onClick={() => deleteItem(inventoryItem._id)} /></td>
+                                            <td className='btn-issue-inventory-item'><DoubleArrowIcon onClick={() => issueItem(inventoryItem._id)} /></td>
                                         </tr>
                                     ))}
                                 </tbody>
