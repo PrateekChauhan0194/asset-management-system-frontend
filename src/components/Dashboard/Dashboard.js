@@ -15,7 +15,6 @@ const Dashboard = () => {
     const [inventoryAssetsData, setInventoryAssetsData] = useState(null);
     const [loanedAssetsData, setLoanedAssetsData] = useState(null);
 
-
     const navigate = useNavigate();
 
     // eslint-disable-next-line
@@ -29,146 +28,163 @@ const Dashboard = () => {
 
     const setItemCounts = async () => {
         const items = await getAllItems();
-        const inventoryItems = items.filter(item => item.serviceNumber === 'inventory');
-        const loanedItems = items.filter(item => item.serviceNumber !== 'inventory');
+        if (items !== false) {
+            const inventoryItems = items.filter(item => item.serviceNumber === 'inventory');
+            const loanedItems = items.filter(item => item.serviceNumber !== 'inventory');
 
-        setTotalAssets(items.length);
-        setTotalInventoryAssets(inventoryItems.length);
-        setTotalLoanedAssets(loanedItems.length);
+            setTotalAssets(items.length);
+            setTotalInventoryAssets(inventoryItems.length);
+            setTotalLoanedAssets(loanedItems.length);
+        } else {
+            navigate('/');
+        }
     }
 
     const getTotalAssetsData = async () => {
         const items = await getAllItems();
-        const itemNames = items.map(item => item.name);
-        const uniqueItemNames = [...new Set(itemNames)];
 
-        // Get models from the items for each unique item name
-        const models = uniqueItemNames.map(async (itemName) => {
-            // Get all items with the same name
-            const itemsWithSameName = items.filter(item => item.name === itemName);
+        if (items !== false) {
+            const itemNames = items.map(item => item.name);
+            const uniqueItemNames = [...new Set(itemNames)];
 
-            // Get all models from the items with the same name
-            const models = itemsWithSameName.map(item => item.model);
+            // Get models from the items for each unique item name
+            const models = uniqueItemNames.map(async (itemName) => {
+                // Get all items with the same name
+                const itemsWithSameName = items.filter(item => item.name === itemName);
 
-            // Return all models
-            return models;
-        });
-        // fetch data from array of promises (models)
-        const modelsOfEachUniqueItems = await Promise.all(models);
+                // Get all models from the items with the same name
+                const models = itemsWithSameName.map(item => item.model);
 
-        const data = modelsOfEachUniqueItems.map(element => {
-            const uniqueModels = [...new Set(element)];
-            const uniqueModelsCount = uniqueModels.map(model => {
-                const count = element.filter(item => item === model).length;
-                return { model, count };
+                // Return all models
+                return models;
             });
-            // Convert uniqueModelsCount to an object in format { model: count }
-            const uniqueModelsCountObject = uniqueModelsCount.reduce((acc, curr) => {
-                acc[curr.model] = curr.count;
-                return acc;
-            }, {});
-            return uniqueModelsCountObject;
-        });
-        const finalData = await Promise.all(data);
+            // fetch data from array of promises (models)
+            const modelsOfEachUniqueItems = await Promise.all(models);
 
-        let totalAssetsData = {};
-        for (let i = 0; i < uniqueItemNames.length; i++) {
-            const element = uniqueItemNames[i];
-            totalAssetsData[element] = finalData[i];
+            const data = modelsOfEachUniqueItems.map(element => {
+                const uniqueModels = [...new Set(element)];
+                const uniqueModelsCount = uniqueModels.map(model => {
+                    const count = element.filter(item => item === model).length;
+                    return { model, count };
+                });
+                // Convert uniqueModelsCount to an object in format { model: count }
+                const uniqueModelsCountObject = uniqueModelsCount.reduce((acc, curr) => {
+                    acc[curr.model] = curr.count;
+                    return acc;
+                }, {});
+                return uniqueModelsCountObject;
+            });
+            const finalData = await Promise.all(data);
+
+            let totalAssetsData = {};
+            for (let i = 0; i < uniqueItemNames.length; i++) {
+                const element = uniqueItemNames[i];
+                totalAssetsData[element] = finalData[i];
+            }
+            console.log('Total');
+            console.log(totalAssetsData);
+            return totalAssetsData;
+        } else {
+            navigate('/');
         }
-        console.log('Total');
-        console.log(totalAssetsData);
-        return totalAssetsData;
     };
 
     const getInventoryAssetsData = async () => {
         let items = await getAllItems();
-        items = items.filter(item => item.serviceNumber === 'inventory');
-        const itemNames = items.map(item => item.name);
-        const uniqueItemNames = [...new Set(itemNames)];
+        if (items !== false) {
+            items = items.filter(item => item.serviceNumber === 'inventory');
+            const itemNames = items.map(item => item.name);
+            const uniqueItemNames = [...new Set(itemNames)];
 
-        // Get models from the items for each unique item name
-        const models = uniqueItemNames.map(async (itemName) => {
-            // Get all items with the same name
-            const itemsWithSameName = items.filter(item => item.name === itemName);
+            // Get models from the items for each unique item name
+            const models = uniqueItemNames.map(async (itemName) => {
+                // Get all items with the same name
+                const itemsWithSameName = items.filter(item => item.name === itemName);
 
-            // Get all models from the items with the same name
-            const models = itemsWithSameName.map(item => item.model);
+                // Get all models from the items with the same name
+                const models = itemsWithSameName.map(item => item.model);
 
-            // Return all models
-            return models;
-        });
-        // fetch data from array of promises (models)
-        const modelsOfEachUniqueItems = await Promise.all(models);
-
-        const data = modelsOfEachUniqueItems.map(element => {
-            const uniqueModels = [...new Set(element)];
-            const uniqueModelsCount = uniqueModels.map(model => {
-                const count = element.filter(item => item === model).length;
-                return { model, count };
+                // Return all models
+                return models;
             });
-            // Convert uniqueModelsCount to an object in format { model: count }
-            const uniqueModelsCountObject = uniqueModelsCount.reduce((acc, curr) => {
-                acc[curr.model] = curr.count;
-                return acc;
-            }, {});
-            return uniqueModelsCountObject;
-        });
-        const finalData = await Promise.all(data);
+            // fetch data from array of promises (models)
+            const modelsOfEachUniqueItems = await Promise.all(models);
 
-        let inventoryAssetsData = {};
-        for (let i = 0; i < uniqueItemNames.length; i++) {
-            const element = uniqueItemNames[i];
-            inventoryAssetsData[element] = finalData[i];
+            const data = modelsOfEachUniqueItems.map(element => {
+                const uniqueModels = [...new Set(element)];
+                const uniqueModelsCount = uniqueModels.map(model => {
+                    const count = element.filter(item => item === model).length;
+                    return { model, count };
+                });
+                // Convert uniqueModelsCount to an object in format { model: count }
+                const uniqueModelsCountObject = uniqueModelsCount.reduce((acc, curr) => {
+                    acc[curr.model] = curr.count;
+                    return acc;
+                }, {});
+                return uniqueModelsCountObject;
+            });
+            const finalData = await Promise.all(data);
+
+            let inventoryAssetsData = {};
+            for (let i = 0; i < uniqueItemNames.length; i++) {
+                const element = uniqueItemNames[i];
+                inventoryAssetsData[element] = finalData[i];
+            }
+            console.log('Inventory');
+            console.log(inventoryAssetsData);
+            return inventoryAssetsData;
+        } else {
+            navigate('/');
         }
-        console.log('Inventory');
-        console.log(inventoryAssetsData);
-        return inventoryAssetsData;
     }
 
     const getLoanedAssetsData = async () => {
         let items = await getAllItems();
-        items = items.filter(item => item.serviceNumber !== 'inventory');
-        const itemNames = items.map(item => item.name);
-        const uniqueItemNames = [...new Set(itemNames)];
+        if (items !== false) {
+            items = items.filter(item => item.serviceNumber !== 'inventory');
+            const itemNames = items.map(item => item.name);
+            const uniqueItemNames = [...new Set(itemNames)];
 
-        // Get models from the items for each unique item name
-        const models = uniqueItemNames.map(async (itemName) => {
-            // Get all items with the same name
-            const itemsWithSameName = items.filter(item => item.name === itemName);
+            // Get models from the items for each unique item name
+            const models = uniqueItemNames.map(async (itemName) => {
+                // Get all items with the same name
+                const itemsWithSameName = items.filter(item => item.name === itemName);
 
-            // Get all models from the items with the same name
-            const models = itemsWithSameName.map(item => item.model);
+                // Get all models from the items with the same name
+                const models = itemsWithSameName.map(item => item.model);
 
-            // Return all models
-            return models;
-        });
-        // fetch data from array of promises (models)
-        const modelsOfEachUniqueItems = await Promise.all(models);
-
-        const data = modelsOfEachUniqueItems.map(element => {
-            const uniqueModels = [...new Set(element)];
-            const uniqueModelsCount = uniqueModels.map(model => {
-                const count = element.filter(item => item === model).length;
-                return { model, count };
+                // Return all models
+                return models;
             });
-            // Convert uniqueModelsCount to an object in format { model: count }
-            const uniqueModelsCountObject = uniqueModelsCount.reduce((acc, curr) => {
-                acc[curr.model] = curr.count;
-                return acc;
-            }, {});
-            return uniqueModelsCountObject;
-        });
-        const finalData = await Promise.all(data);
+            // fetch data from array of promises (models)
+            const modelsOfEachUniqueItems = await Promise.all(models);
 
-        let loanedAssetsData = {};
-        for (let i = 0; i < uniqueItemNames.length; i++) {
-            const element = uniqueItemNames[i];
-            loanedAssetsData[element] = finalData[i];
+            const data = modelsOfEachUniqueItems.map(element => {
+                const uniqueModels = [...new Set(element)];
+                const uniqueModelsCount = uniqueModels.map(model => {
+                    const count = element.filter(item => item === model).length;
+                    return { model, count };
+                });
+                // Convert uniqueModelsCount to an object in format { model: count }
+                const uniqueModelsCountObject = uniqueModelsCount.reduce((acc, curr) => {
+                    acc[curr.model] = curr.count;
+                    return acc;
+                }, {});
+                return uniqueModelsCountObject;
+            });
+            const finalData = await Promise.all(data);
+
+            let loanedAssetsData = {};
+            for (let i = 0; i < uniqueItemNames.length; i++) {
+                const element = uniqueItemNames[i];
+                loanedAssetsData[element] = finalData[i];
+            }
+            console.log('Loaned');
+            console.log(loanedAssetsData);
+            return loanedAssetsData;
+        } else {
+            navigate('/');
         }
-        console.log('Loaned');
-        console.log(loanedAssetsData);
-        return loanedAssetsData;
     }
 
     const getDataToDisplay = (data) => {
