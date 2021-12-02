@@ -7,7 +7,6 @@ import { isLoggedIn, logout } from '../../services/AuthService';
 
 const ChangePassword = () => {
     const navigate = useNavigate();
-    const [loginStatus, setLoginStatus] = useState(false);
 
     const handleDismiss = () => {
         document.getElementById('text-current-password').value = '';
@@ -55,7 +54,7 @@ const ChangePassword = () => {
             toast.success(data.msg);
             document.querySelector('#change-password .btn-close').click();
             logout();
-            setLoginStatus(await isLoggedIn());
+            navigate('/');
         } else {
             toast.error(data.error);
         }
@@ -91,7 +90,6 @@ const ChangePassword = () => {
                                     <Button variant="contained" type="submit" color="primary" onClick={async (e) => {
                                         e.preventDefault();
                                         await handleChangePassword();
-                                        !loginStatus && navigate('/');
                                     }}>Change password</Button>
                                 </div>
                             </form>
