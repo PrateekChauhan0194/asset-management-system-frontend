@@ -1,7 +1,13 @@
 import { API_HOST } from '../config';
 
 const getBorrowers = async () => {
-    const response = await fetch(`${API_HOST}/api/v1/borrower/getAll`);
+    const auth_token = localStorage.getItem('auth_token');
+    const response = await fetch(`${API_HOST}/api/v1/borrower/getAll`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'auth_token': auth_token
+        }
+    });
     const data = await response.json();
     return data;
 }

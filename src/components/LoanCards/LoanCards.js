@@ -7,6 +7,7 @@ import { Typography } from '@mui/material';
 import LoanCard from '../LoanCard/LoanCard';
 import { getBorrowers } from '../../services/APIComms';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const LoanCards = () => {
     const navigate = useNavigate();
@@ -14,7 +15,13 @@ const LoanCards = () => {
     const [borrowers, setBorrowers] = useState([])
     // eslint-disable-next-line
     useEffect(async () => {
-        setBorrowers(await getBorrowers());
+        const data = await getBorrowers();
+        if (!data.error) {
+            setBorrowers(data);
+        } else {
+            toast.info('Login to continue');
+            navigate('/');
+        }
         // eslint-disable-next-line
     }, []);
 
