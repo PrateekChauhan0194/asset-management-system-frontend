@@ -13,6 +13,12 @@
     border-radius: 10px;
 }
 
+/* Translucent background to the email and password inputs */
+.signup-container input[type=text], .signup-container input[type=password] {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
 .signup-container button[type="submit"] {
     color: white;
     padding: 14px 20px;

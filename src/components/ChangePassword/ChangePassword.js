@@ -1,18 +1,21 @@
 import { FormControl, Input, InputLabel, Button } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { API_HOST } from '../../config';
-import { logout } from '../../services/AuthService';
+import { isLoggedIn, logout } from '../../services/AuthService';
 
 const ChangePassword = () => {
+    const navigate = useNavigate();
+    const [loginStatus, setLoginStatus] = useState(false);
+
     const handleDismiss = () => {
         document.getElementById('text-current-password').value = '';
         document.getElementById('text-new-password').value = '';
         document.getElementById('text-confirm-password').value = '';
     }
 
-    const handleChangePassword = async (e) => {
-        e.preventDefault();
+    const handleChangePassword = async () => {
         const currentPassword = document.getElementById('text-current-password').value;
         const newPassword = document.getElementById('text-new-password').value;
         const confirmPassword = document.getElementById('text-confirm-password').value;
@@ -52,12 +55,13 @@ const ChangePassword = () => {
             toast.success(data.msg);
             document.querySelector('#change-password .btn-close').click();
             logout();
+            setLoginStatus(await isLoggedIn());
         } else {
             toast.error(data.error);
         }
         handleDismiss();
-
     }
+
     return (
         <>
             <div className='modal fade' id='change-password' data-bs-backdrop='static' data-bs-keyboard='false' tabIndex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -84,13 +88,17 @@ const ChangePassword = () => {
                                     </FormControl>
                                 </div>
                                 <div className='modal-footer pb-0'>
-                                    <Button variant="contained" type="submit" color="primary" onClick={handleChangePassword}>Change password</Button>
+                                    <Button variant="contained" type="submit" color="primary" onClick={async (e) => {
+                                        e.preventDefault();
+                                        await handleChangePassword();
+                                        !loginStatus && navigate('/');
+                                    }}>Change password</Button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

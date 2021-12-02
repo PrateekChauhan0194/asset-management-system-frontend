@@ -2,10 +2,12 @@ import './Signup.css';
 import React from 'react';
 import { toast } from 'react-toastify';
 import { API_HOST } from '../../config';
+import { useNavigate } from 'react-router';
+import { isLoggedIn } from '../../services/AuthService';
 
 const Signup = () => {
-    const handleSignup = async (e) => {
-        e.preventDefault();
+
+    const handleSignup = async () => {
 
         const username = document.querySelector('div.signup-container input[name="signup-username"]').value;
         const password = document.querySelector('div.signup-container input[name="signup-password"]').value;
@@ -34,11 +36,13 @@ const Signup = () => {
             toast.success('User created successfully!');
             const auth_token = data.token;
             localStorage.setItem('auth_token', auth_token);
-            window.location.href = '/dashboard';
+            await isLoggedIn() && navigate('/dashboard');
         } else {
             toast.error(data.msg);
         }
     }
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -61,7 +65,10 @@ const Signup = () => {
                                     <input type="password" name='signup-confirm-password' className="form-control" placeholder="Enter password" />
                                 </div>
                                 <div className="d-flex justify-content-center">
-                                    <button type="submit" className="btn btn-primary btn-block" onClick={handleSignup}>Signup</button>
+                                    <button type="submit" className="btn btn-primary btn-block" onClick={async (e) => {
+                                        e.preventDefault();
+                                        await handleSignup();
+                                    }}>Signup</button>
                                 </div>
                             </form>
                         </div>

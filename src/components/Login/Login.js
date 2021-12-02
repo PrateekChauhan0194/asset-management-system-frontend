@@ -1,15 +1,19 @@
 import './Login.css';
 import React from 'react';
 import { login } from '../../services/AuthService';
+import { useNavigate } from 'react-router';
 
-const doLogin = async (e) => {
-    e.preventDefault();
-    const username = document.getElementsByName('username')[0].value;
-    const password = document.getElementsByName('password')[0].value;
-    await login(username, password);
-}
 
 const Login = () => {
+    const navigate = useNavigate();
+
+    const doLogin = async () => {
+        const username = document.getElementsByName('username')[0].value;
+        const password = document.getElementsByName('password')[0].value;
+        await login(username, password) && navigate('/dashboard');
+    }
+
+
     return (
         <>
             <div className="container login-container">
@@ -26,7 +30,10 @@ const Login = () => {
                                     <label>Password</label>
                                     <input type="password" name='password' className="form-control" placeholder="Enter password" />
                                 </div>
-                                <button type="submit" className="btn btn-primary btn-block" onClick={doLogin}>Login</button>
+                                <button type="submit" className="btn btn-primary btn-block" onClick={async (e) => {
+                                    e.preventDefault();
+                                    await doLogin();
+                                }}>Login</button>
                             </form>
                         </div>
                     </div>

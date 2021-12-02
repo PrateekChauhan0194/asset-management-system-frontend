@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { isLoggedIn } from '../../services/AuthService';
 import Navbar from '../Navbar/Navbar';
 import { getAllItems } from '../../services/APIComms';
+import { useNavigate } from 'react-router';
 
 const Dashboard = () => {
     const [totalAssets, setTotalAssets] = useState(0);
@@ -13,6 +14,9 @@ const Dashboard = () => {
     const [totalAssetsData, setTotalAssetsData] = useState(null);
     const [inventoryAssetsData, setInventoryAssetsData] = useState(null);
     const [loanedAssetsData, setLoanedAssetsData] = useState(null);
+
+
+    const navigate = useNavigate();
 
     // eslint-disable-next-line
     useEffect(async () => {
@@ -249,7 +253,7 @@ const Dashboard = () => {
                 </div>
             </>
         ) : (
-            window.location.href = '/'
+            navigate('/')
         )
     )
 }

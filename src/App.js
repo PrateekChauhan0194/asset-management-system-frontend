@@ -16,8 +16,8 @@ function App() {
   return (
     <>
       <ToastContainer hideProgressBar='true' />
-      <ChangePassword />
       <Router>
+        <ChangePassword />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />

@@ -6,8 +6,11 @@ import { getInventoryItems } from '../../services/APIComms';
 import { Typography } from '@mui/material';
 import { API_HOST } from '../../config';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 const Inventory = () => {
+    const navigate = useNavigate();
+
     const [inventoryItems, setInventoryItems] = useState([]);
     // eslint-disable-next-line
     useEffect(async () => {
@@ -151,7 +154,7 @@ const Inventory = () => {
                 </div>
             </>
         ) : (
-            window.location.href = '/'
+            navigate('/')
         )
     )
 }

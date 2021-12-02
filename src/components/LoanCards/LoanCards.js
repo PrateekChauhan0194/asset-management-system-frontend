@@ -6,8 +6,10 @@ import AddLoanCard from '../AddLoanCard/AddLoanCard';
 import { Typography } from '@mui/material';
 import LoanCard from '../LoanCard/LoanCard';
 import { getBorrowers } from '../../services/APIComms';
+import { useNavigate } from 'react-router';
 
 const LoanCards = () => {
+    const navigate = useNavigate();
 
     const [borrowers, setBorrowers] = useState([])
     // eslint-disable-next-line
@@ -40,7 +42,7 @@ const LoanCards = () => {
                 </div>
             </>
         ) : (
-            window.location.href = '/'
+            navigate('/')
         )
     )
 }

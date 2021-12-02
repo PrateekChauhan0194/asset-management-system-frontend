@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../services/AuthService';
+import { useNavigate } from 'react-router';
 
 const isDashboard = () => {
     return window.location.pathname === '/dashboard';
@@ -16,6 +17,7 @@ const isLoanCards = () => {
 
 
 const Navbar = () => {
+    const navigate = useNavigate();
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,7 +41,10 @@ const Navbar = () => {
                         <form className="d-flex">
                             {/* eslint-disable-next-line */}
                             <a className="btn btn-outline-success mx-2" data-bs-toggle='modal' data-bs-target='#change-password'>Change password</a>
-                            <button className="btn btn-outline-danger" onClick={() => logout()}>Logout</button>
+                            <button className="btn btn-outline-danger" onClick={() => {
+                                logout();
+                                navigate('/');
+                            }}>Logout</button>
                         </form>
                     </div>
                 </div>
