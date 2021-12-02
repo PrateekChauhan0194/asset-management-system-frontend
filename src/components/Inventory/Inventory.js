@@ -82,7 +82,7 @@ const Inventory = () => {
         const date = new Date();
         const strDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
-        let printContainer = parse(document.querySelector(`div.container-inventory-item-list div.print-container`).innerHTML);
+        const printContainer = parse(document.querySelector(`div.container-inventory-item-list div.print-container`).innerHTML);
         // Remove all the svg elements from the print container
         const svgElements = printContainer.querySelectorAll('svg');
         svgElements.forEach((svg) => {

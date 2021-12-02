@@ -6,6 +6,7 @@ import { API_HOST } from '../../config';
 import { toast } from 'react-toastify';
 import SettingsBackupRestoreIcon from '@mui/icons-material/SettingsBackupRestore';
 import PrintIcon from '@mui/icons-material/Print';
+import { parse } from 'node-html-parser';
 
 const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }) => {
     const hasLoanedItems = loanedItems.length > 0;
@@ -50,7 +51,16 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
     const handlePrint = async () => {
         const date = new Date();
         const strDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-        const printContents = document.querySelector(`#view-loaned-items-${borrower._id} .modal-body`).innerHTML;
+
+        const printContainer = parse(document.querySelector(`#view-loaned-items-${borrower._id} .modal-body`).innerHTML);
+        // Remove all the svg elements from the print container
+        const svgElements = printContainer.querySelectorAll('svg');
+        svgElements.forEach((svg) => {
+            svg.remove();
+        });
+        const printContents = printContainer.outerHTML.replace('Return to inventory', '');
+
+        // const printContents = document.querySelector(`#view-loaned-items-${borrower._id} .modal-body`).innerHTML;
         const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
         popupWin.document.open();
         popupWin.document.write(`
