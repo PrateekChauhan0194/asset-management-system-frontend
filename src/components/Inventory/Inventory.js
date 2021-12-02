@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import PrintIcon from '@mui/icons-material/Print';
+import { parse } from 'node-html-parser';
 
 const Inventory = () => {
     const navigate = useNavigate();
@@ -80,7 +81,16 @@ const Inventory = () => {
     const handlePrint = async () => {
         const date = new Date();
         const strDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-        const printContents = document.querySelector(`div.container-inventory-item-list div.print-container`).innerHTML;
+
+        let printContainer = parse(document.querySelector(`div.container-inventory-item-list div.print-container`).innerHTML);
+        // Remove all the svg elements from the print container
+        const svgElements = printContainer.querySelectorAll('svg');
+        svgElements.forEach((svg) => {
+            svg.remove();
+        });
+        let printContents = printContainer.outerHTML.replace('Delete', '');
+        printContents = printContents.replace('Issue item', '');
+
         const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
         popupWin.document.open();
         popupWin.document.write(`
