@@ -1,9 +1,9 @@
 import { FormControl, Input, InputLabel, Button } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { API_HOST } from '../../config';
-import { isLoggedIn, logout } from '../../services/AuthService';
+import { logout } from '../../services/AuthService';
 
 const ChangePassword = () => {
     const navigate = useNavigate();

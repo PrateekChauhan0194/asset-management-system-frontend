@@ -24,7 +24,7 @@ const AddToInventory = ({ setInventoryItems }) => {
         });
 
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         if (!data.errors) {
             setInventoryItems(await getInventoryItems());
             toast.success('Item added to inventory');

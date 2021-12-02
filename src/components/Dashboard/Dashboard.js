@@ -83,8 +83,8 @@ const Dashboard = () => {
                 const element = uniqueItemNames[i];
                 totalAssetsData[element] = finalData[i];
             }
-            console.log('Total');
-            console.log(totalAssetsData);
+            // console.log('Total');
+            // console.log(totalAssetsData);
             return totalAssetsData;
         } else {
             navigate('/');
@@ -132,8 +132,8 @@ const Dashboard = () => {
                 const element = uniqueItemNames[i];
                 inventoryAssetsData[element] = finalData[i];
             }
-            console.log('Inventory');
-            console.log(inventoryAssetsData);
+            // console.log('Inventory');
+            // console.log(inventoryAssetsData);
             return inventoryAssetsData;
         } else {
             navigate('/');
@@ -181,8 +181,8 @@ const Dashboard = () => {
                 const element = uniqueItemNames[i];
                 loanedAssetsData[element] = finalData[i];
             }
-            console.log('Loaned');
-            console.log(loanedAssetsData);
+            // console.log('Loaned');
+            // console.log(loanedAssetsData);
             return loanedAssetsData;
         } else {
             navigate('/');

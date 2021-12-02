@@ -37,7 +37,7 @@ const logout = () => {
 const isLoggedIn = async () => {
     const auth_token = localStorage.getItem('auth_token');
     if (!auth_token) {
-        console.log('Not logged in');
+        // console.log('Not logged in');
         return false;
     }
     const response = await fetch(`${API_HOST}/api/v1/auth`, {
