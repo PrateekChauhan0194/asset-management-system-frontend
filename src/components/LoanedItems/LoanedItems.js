@@ -83,6 +83,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                         <hr/>
                         <h2 style="text-align: center;">Loan card - ${strDate}</h2>
                         <hr/>
+                        <h5>Number of loaned items: ${loanedItems.length}</h5>
                         <h5>Service number: ${borrower.serviceNumber}</h5>
                         <h5>Rank: ${borrower.rank}</h5>
                         <h5>Name: ${borrower.fullName}</h5>
