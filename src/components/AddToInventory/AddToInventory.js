@@ -30,9 +30,12 @@ const AddToInventory = ({ setInventoryItems }) => {
             toast.success('Item added to inventory');
             clearForm();
         } else {
-            data.errors.forEach((error) => {
-                toast.error(error.msg);
-            });
+            toast.dismiss();
+            setTimeout(() => {
+                data.errors.forEach((error) => {
+                    toast.error(error.msg);
+                });
+            }, 200);
         }
     };
 

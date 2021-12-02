@@ -120,6 +120,8 @@ const Inventory = () => {
                         <hr/>
                         <h2 style="text-align: center;">IT Inventory - ${strDate}</h2>
                         <hr/>
+                        <h3>Total number of items: ${inventoryItems.length}</h2>
+                        <hr/>
                         <div>${printContents}</div>
                         <hr/>
                 </body>
@@ -136,11 +138,11 @@ const Inventory = () => {
                 <div className="container">
                     <div className='container-inventory-item-list'>
                         <Typography variant="h2" className="title-inventory-item-list mt-5">
-                            Your inventory
+                            Your inventory <button className="btn btn-outline-secondary" onClick={handlePrint}><PrintIcon /> Print</button>
                         </Typography>
-                        <div className="header d-flex justify-content-end">
-                            <button className="btn btn-outline-secondary" onClick={handlePrint}><PrintIcon /> Print</button>
-                        </div>
+                        <Typography variant="h4" className="my-5">
+                            Number of items: {inventoryItems.length}
+                        </Typography>
 
                         <div className="print-container">
                             <table className="table table-striped">
