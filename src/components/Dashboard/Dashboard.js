@@ -265,8 +265,8 @@ const Dashboard = () => {
 
 
                     <Typography variant="h3" gutterBottom className='mt-5'>Defects</Typography>
-                    <li>Unable to update loancard if items are issued to it.</li>
-                    <li>Edit loan card not working</li>
+                    <li>Item issued date should not get updated when you edit the loan card [Add new item to inventory can have system date]</li>
+                    <li>Loan assets on old (specific) dates</li>
                     <Typography variant="h3" gutterBottom className='mt-5'>Todo</Typography>
 
                 </div>

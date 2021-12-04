@@ -11,9 +11,12 @@ const Login = () => {
     const doLogin = async () => {
         const username = document.getElementsByName('username')[0].value;
         const password = document.getElementsByName('password')[0].value;
-        await login(username, password) && navigate('/dashboard');
-        toast.dismiss();
-        setTimeout(() => toast.success('Login successful, Welcome!'), 500);
+        const res = await login(username, password)
+        res && navigate('/dashboard');
+        if (res) {
+            toast.dismiss();
+            setTimeout(() => toast.success('Login successful, Welcome!'), 500);
+        }
     }
 
 
