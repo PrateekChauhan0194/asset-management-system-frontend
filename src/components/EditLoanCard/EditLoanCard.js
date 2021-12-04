@@ -33,7 +33,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    serviceNumber: serviceNumber,
+                    serviceNumber: 'inventory',
                     name: item.name,
                     serialNumber: item.serialNumber,
                     model: item.model,
@@ -59,13 +59,50 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
         if (!data.errors) {
             toast.success('Loan card updated successfully.');
             setBorrowers(await getBorrowers());
+
+            loanedItems.forEach(async (item) => {
+                await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        serviceNumber: serviceNumber,
+                        name: item.name,
+                        serialNumber: item.serialNumber,
+                        model: item.model,
+                        gigNumber: item.gigNumber,
+                    }),
+                });
+            });
         } else {
+            loanedItems.forEach(async (item) => {
+                await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        serviceNumber: borrower.serviceNumber,
+                        name: item.name,
+                        serialNumber: item.serialNumber,
+                        model: item.model,
+                        gigNumber: item.gigNumber,
+                    }),
+                });
+            });
             toast.error(data.errors[0].msg);
         }
     };
 
     const getLoanedItems = async (serviceNumber) => {
-        const response = await fetch(`${API_HOST}/api/v1/item/getItems/${serviceNumber}`);
+        const response = await fetch(`${API_HOST}/api/v1/item/getItems/${serviceNumber}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth_token': localStorage.getItem('auth_token'),
+            },
+        });
         const data = await response.json();
         if (!data.errors) {
             return data;
