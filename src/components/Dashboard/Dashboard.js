@@ -266,7 +266,7 @@ const Dashboard = () => {
 
                     <Typography variant="h3" gutterBottom className='mt-5'>Defects</Typography>
                     <Typography variant="h3" gutterBottom className='mt-5'>Todo</Typography>
-                    <li>Add new item to inventory: Issued date - System date</li>
+                    <li>✅ Add new item to inventory: Issued date - System date</li>
                     <li>Issue the item to a loan card: Issued date - Ask for the issue date</li>
                     <li>Return the item to the inventory: Issued date - System date</li>
                     <br />
