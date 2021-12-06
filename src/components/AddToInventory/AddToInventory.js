@@ -20,6 +20,7 @@ const AddToInventory = ({ setInventoryItems }) => {
                 serialNumber: document.getElementById('form-add-to-inventory--text-item-serial-number').value,
                 model: document.getElementById('form-add-to-inventory--text-item-model').value,
                 gigNumber: document.getElementById('form-add-to-inventory--text-item-gig-number').value,
+                issueDate: new Date().toISOString(),
             }),
         });
 
