@@ -164,7 +164,7 @@ const Inventory = () => {
                                             <td>{inventoryItem.serialNumber}</td>
                                             <td>{inventoryItem.model}</td>
                                             <td>{inventoryItem.gigNumber}</td>
-                                            <td>{new Date(inventoryItem.dataCreationDate).toDateString()}</td>
+                                            <td>{new Date(inventoryItem.issueDate).toDateString()}</td>
                                             <td className='btn-delete-inventory-item'><DeleteIcon onClick={() => deleteItem(inventoryItem._id)} /></td>
                                             <td className='btn-issue-inventory-item'><DoubleArrowIcon onClick={() => issueItem(inventoryItem._id)} /></td>
                                         </tr>
