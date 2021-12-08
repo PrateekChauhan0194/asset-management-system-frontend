@@ -270,11 +270,11 @@ const Dashboard = () => {
                     <li>✅ Issue the item to a loan card: Issued date - Ask for the issue date</li>
                     <li>✅ Return the item to the inventory: Issued date - System date</li>
                     <br />
-                    <div className='h5'>Edit Loan card - Issue date should not be changed</div>
-                    <li><strong>Step 1:</strong> Get item and capture the issued date from item object(s)</li>
-                    <li><strong>Step 2:</strong> Change the service number of items to 'inventory'</li>
-                    <li><strong>Step 3:</strong> Edit loan card (which now has no issued items)</li>
-                    <li><strong>Step 4:</strong> Change the service number of items to the borrower service number AND issued date to the dates captured in step 1</li>
+                    <div className='h5'>✅ Edit Loan card - Issue date should not be changed</div>
+                    <li>✅ <strong>Step 1:</strong> Get item and capture the issued date from item object(s)</li>
+                    <li>✅ <strong>Step 2:</strong> Change the service number of items to 'inventory'</li>
+                    <li>✅ <strong>Step 3:</strong> Edit loan card (which now has no issued items)</li>
+                    <li>✅ <strong>Step 4:</strong> Change the service number of items to the borrower service number AND issued date to the dates captured in step 1</li>
 
                 </div>
             </>

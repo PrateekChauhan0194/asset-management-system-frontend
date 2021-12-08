@@ -38,6 +38,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
                     serialNumber: item.serialNumber,
                     model: item.model,
                     gigNumber: item.gigNumber,
+                    issueDate: item.issueDate,
                 }),
             });
         });
@@ -72,6 +73,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
                         serialNumber: item.serialNumber,
                         model: item.model,
                         gigNumber: item.gigNumber,
+                        issueDate: item.issueDate,
                     }),
                 });
             });
@@ -88,6 +90,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
                         serialNumber: item.serialNumber,
                         model: item.model,
                         gigNumber: item.gigNumber,
+                        issueDate: item.issueDate,
                     }),
                 });
             });
