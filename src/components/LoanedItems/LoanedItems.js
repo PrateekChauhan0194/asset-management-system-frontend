@@ -131,7 +131,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                                 <td>{loanedItem.name}</td>
                                                 <td>{loanedItem.model}</td>
                                                 <td>{loanedItem.serialNumber}</td>
-                                                <td>{new Date(loanedItem.dataCreationDate).toDateString()}</td>
+                                                <td>{new Date(loanedItem.issueDate).toDateString()}</td>
                                                 <td className='btn-return'><Tooltip title='Return item' placement='right' TransitionComponent={Zoom}><SettingsBackupRestoreIcon onClick={() => returnItem(loanedItem._id)} /></Tooltip></td>
                                             </tr>
                                         ))}

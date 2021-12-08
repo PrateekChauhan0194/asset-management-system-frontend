@@ -11,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import PrintIcon from '@mui/icons-material/Print';
 import { parse } from 'node-html-parser';
+import IssueItem from '../IssueItem/IssueItem';
 
 const Inventory = () => {
     const navigate = useNavigate();
@@ -44,44 +45,6 @@ const Inventory = () => {
                 toast.success('Item deleted successfully');
                 setInventoryItems(await getInventoryItems());
             }
-        }
-    };
-
-    const issueItem = async (id) => {
-        const response = await fetch(`${API_HOST}/api/v1/item/getItem/${id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const item = await response.json();
-        if (!item.errors) {
-            const serviceNumber = prompt('Please enter the service number to issue the item');
-            if (serviceNumber) {
-                const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        serviceNumber,
-                        name: item.name,
-                        serialNumber: item.serialNumber,
-                        model: item.model,
-                        gigNumber: item.gigNumber,
-                    }),
-                });
-                const data = await response.json();
-                if (!data.errors) {
-                    alert(`Item issued to person with service number ${serviceNumber}`);
-                    toast.success('Item issued successfully');
-                    setInventoryItems(await getInventoryItems());
-                } else {
-                    toast.error(data.errors[0].msg);
-                }
-            }
-        } else {
-            toast.error('Error in issuing item');
         }
     };
 
@@ -160,13 +123,15 @@ const Inventory = () => {
                                 <tbody>
                                     {inventoryItems.map((inventoryItem, index) => (
                                         <tr key={index}>
+                                            <IssueItem item={inventoryItem} setInventoryItems={setInventoryItems} />
                                             <td>{inventoryItem.name}</td>
                                             <td>{inventoryItem.serialNumber}</td>
                                             <td>{inventoryItem.model}</td>
                                             <td>{inventoryItem.gigNumber}</td>
                                             <td>{new Date(inventoryItem.issueDate).toDateString()}</td>
                                             <td className='btn-delete-inventory-item'><DeleteIcon onClick={() => deleteItem(inventoryItem._id)} /></td>
-                                            <td className='btn-issue-inventory-item'><DoubleArrowIcon onClick={() => issueItem(inventoryItem._id)} /></td>
+                                            <td className='btn-issue-inventory-item'><DoubleArrowIcon data-bs-toggle='modal' data-bs-target={`#issue-item-${inventoryItem._id}`} onClick={() => console.log(inventoryItem)} />
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
