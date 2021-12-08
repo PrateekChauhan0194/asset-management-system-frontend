@@ -34,6 +34,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                         serialNumber: item.serialNumber,
                         model: item.model,
                         gigNumber: item.gigNumber,
+                        issueDate: new Date().toISOString(),
                     }),
                 });
                 const data = await response.json();
@@ -120,7 +121,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                             <th>Item name</th>
                                             <th>Item model</th>
                                             <th>Item serial number</th>
-                                            <th>Loaned on</th>
+                                            <th>Issue date</th>
                                             <th>Return to inventory</th>
                                         </tr>
                                     </thead>
