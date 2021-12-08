@@ -75,22 +75,25 @@ const ChangePassword = () => {
                                 <div className="form-group my-4">
                                     <FormControl fullWidth className='my-2'>
                                         <InputLabel htmlFor="currentPassword">Current password</InputLabel>
-                                        <Input aria-describedby="text-current-password" id='text-current-password' type="password" />
+                                        <Input aria-describedby="text-current-password" id='text-current-password' type="password" autoComplete="on" />
                                     </FormControl>
                                     <FormControl fullWidth className='my-2'>
                                         <InputLabel htmlFor="newPassword">New password</InputLabel>
-                                        <Input aria-describedby="text-new-password" id='text-new-password' type="password" />
+                                        <Input aria-describedby="text-new-password" id='text-new-password' type="password" autoComplete="on" />
                                     </FormControl>
                                     <FormControl fullWidth className='my-2'>
                                         <InputLabel htmlFor="confirmPassword">Confirm password</InputLabel>
-                                        <Input aria-describedby="text-confirm-password" id='text-confirm-password' type="password" />
+                                        <Input aria-describedby="text-confirm-password" id='text-confirm-password' type="password" autoComplete="on" />
                                     </FormControl>
                                 </div>
                                 <div className='modal-footer pb-0'>
-                                    <Button variant="contained" type="submit" color="primary" onClick={async (e) => {
-                                        e.preventDefault();
-                                        await handleChangePassword();
-                                    }}>Change password</Button>
+                                    <Button variant="contained"
+                                        type="submit"
+                                        color="primary"
+                                        onClick={async (e) => {
+                                            e.preventDefault();
+                                            await handleChangePassword();
+                                        }}>Change password</Button>
                                 </div>
                             </form>
                         </div>
