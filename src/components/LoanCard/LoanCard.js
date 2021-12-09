@@ -69,12 +69,13 @@ const LoanCard = (props) => {
                     <Card.Title>{props.borrower.rank} {props.borrower.fullName}</Card.Title>
                     <Card.Subtitle className='mb-2 text-muted'>Service No: {props.borrower.serviceNumber}</Card.Subtitle>
                     <Card.Text>Section: {props.borrower.department}</Card.Text>
-                    <div className='controls my-2 d-flex justify-content-end'>
-                        <span className='btn-view'><Tooltip title="View" placement='top'><VisibilityIcon data-bs-toggle='modal' data-bs-target={`#view-loaned-items-${props.borrower._id}`} onClick={() => fetchLoanedItems(props.borrower.serviceNumber)} /></Tooltip></span>
-                        <span className='btn-edit'><Tooltip title="Edit" placement='top'><EditIcon data-bs-toggle='modal' data-bs-target={`#edit-borrower-modal-${props.borrower._id}`} onClick={setEditLoanCardModalTest} /></Tooltip></span>
-                        <span className='btn-delete'><Tooltip title="Delete" placement='top'><DeleteIcon onClick={() => deleteBorrower(props.borrower._id)} /></Tooltip></span>
-                    </div>
-                    <Card.Footer><small><b>Created on:</b> {new Date(props.borrower.dataCreationDate).toDateString()}</small></Card.Footer>
+                    <Card.Footer>
+                        <div className='controls d-flex justify-content-around'>
+                            <span className='btn-view'><Tooltip title="View" placement='top'><VisibilityIcon data-bs-toggle='modal' data-bs-target={`#view-loaned-items-${props.borrower._id}`} onClick={() => fetchLoanedItems(props.borrower.serviceNumber)} /></Tooltip></span>
+                            <span className='btn-edit'><Tooltip title="Edit" placement='top'><EditIcon data-bs-toggle='modal' data-bs-target={`#edit-borrower-modal-${props.borrower._id}`} onClick={setEditLoanCardModalTest} /></Tooltip></span>
+                            <span className='btn-delete'><Tooltip title="Delete" placement='top'><DeleteIcon onClick={() => deleteBorrower(props.borrower._id)} /></Tooltip></span>
+                        </div>
+                    </Card.Footer>
                 </Card.Body>
             </Card>
         </>
