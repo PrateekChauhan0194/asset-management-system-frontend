@@ -53,11 +53,19 @@ const Inventory = () => {
         const strDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 
         const printContainer = parse(document.querySelector(`div.container-inventory-item-list div.print-container`).innerHTML);
+
         // Remove all the svg elements from the print container
         const svgElements = printContainer.querySelectorAll('svg');
         svgElements.forEach((svg) => {
             svg.remove();
         });
+
+        // Remove all the modal elements from the print container
+        const modals = printContainer.querySelectorAll('.modal');
+        modals.forEach((modal) => {
+            modal.remove();
+        });
+
         let printContents = printContainer.outerHTML.replace('Delete', '');
         printContents = printContents.replace('Issue item', '');
 
