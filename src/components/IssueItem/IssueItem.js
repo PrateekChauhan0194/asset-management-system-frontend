@@ -14,7 +14,7 @@ const IssueItem = (props) => {
     const issueItem = async (e) => {
         e.preventDefault();
         const selectedDate = new Date(date);
-        selectedDate.setDate(selectedDate.getDate() + 1);
+        // selectedDate.setDate(selectedDate.getDate() + 1);
         const issueDate = selectedDate.toISOString();
 
         if (serviceNumber.length === 0) {
@@ -65,7 +65,7 @@ const IssueItem = (props) => {
                 <div className='modal-dialog modal-dialog-centered'>
                     <div className='modal-content'>
                         <div className='modal-header'>
-                            <h5 className='modal-title' id={`issue-item_title_${props.item._id}`}>Issue item - {props.item._id}</h5>
+                            <h5 className='modal-title' id={`issue-item_title_${props.item._id}`}>Issue item</h5>
                             <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' onClick={() => setServiceNumber('')} />
                         </div>
                         <div className='modal-body'>
