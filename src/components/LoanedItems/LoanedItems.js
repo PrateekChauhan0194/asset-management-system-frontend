@@ -78,6 +78,14 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                                 page-break-after: always;
                             }
                         }
+                        table, th, td {
+                            text-align: left;
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                        }
+                        th, td {
+                            padding: 5px;
+                        }
                     </style>
                 </head>
                 <body onload="window.print();window.close()">
