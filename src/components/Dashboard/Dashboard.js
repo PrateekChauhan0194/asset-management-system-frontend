@@ -1,11 +1,13 @@
 import './Dashboard.css';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
 import React, { useEffect, useState } from 'react';
 import { isLoggedIn } from '../../services/AuthService';
 import Navbar from '../Navbar/Navbar';
 import { getAllItems } from '../../services/APIComms';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+import { CSVLink } from "react-csv";
 
 const Dashboard = () => {
     const [totalAssets, setTotalAssets] = useState(0);
@@ -24,6 +26,7 @@ const Dashboard = () => {
         setTotalAssetsData(await getTotalAssetsData());
         setInventoryAssetsData(await getInventoryAssetsData());
         setLoanedAssetsData(await getLoanedAssetsData());
+        await setDownloadData();
         // eslint-disable-next-line
     }, []);
 
@@ -221,14 +224,36 @@ const Dashboard = () => {
         }))
     }
 
+    const csvHeaders = [
+        { label: "Service number", key: "serviceNumber" },
+        { label: "Name", key: "name" },
+        { label: "Serial number", key: "serialNumber" },
+        { label: "Model", key: "model" },
+        { label: "Gig number", key: "gigNumber" },
+        { label: "Issue date", key: "issueDate" },
+    ];
+
+    const [csvData, setCsvData] = useState([]);
+    const setDownloadData = async () => {
+        const data = await getAllItems();
+        data.forEach(item => {
+            delete item._id;
+            delete item.__v;
+            delete item.dataCreationDate;
+            item.issueDate = new Date(item.issueDate).toDateString();
+        });
+        setCsvData(data);
+        console.log(data);
+    }
+    const date = new Date();
+    const dateString = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+
     return (
         isLoggedIn() ? (
             <>
                 <Navbar />
                 <div className="container dashboard">
                     <Typography variant="h2" gutterBottom className='mt-5'>Dashboard</Typography>
-
-
 
                     <div className="accordion accordion-flush" id="dashboard--assets-accordion">
                         <div className="accordion-item">
@@ -263,18 +288,13 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-
-                    {/* <Typography variant="h3" gutterBottom className='mt-5'>Defects</Typography>
-                    <Typography variant="h3" gutterBottom className='mt-5'>Todo</Typography>
-                    <li>✅ Add new item to inventory: Issued date - System date</li>
-                    <li>✅ Issue the item to a loan card: Issued date - Ask for the issue date</li>
-                    <li>✅ Return the item to the inventory: Issued date - System date</li>
-                    <br />
-                    <div className='h5'>✅ Edit Loan card - Issue date should not be changed</div>
-                    <li>✅ <strong>Step 1:</strong> Get item and capture the issued date from item object(s)</li>
-                    <li>✅ <strong>Step 2:</strong> Change the service number of items to 'inventory'</li>
-                    <li>✅ <strong>Step 3:</strong> Edit loan card (which now has no issued items)</li>
-                    <li>✅ <strong>Step 4:</strong> Change the service number of items to the borrower service number AND issued date to the dates captured in step 1</li> */}
+                    <div className="mt-5">
+                        <CSVLink data={csvData} headers={csvHeaders} filename={`total_asset_data__${dateString}`}>
+                            <Button variant="contained" color="primary">
+                                <DownloadIcon /> Download Data
+                            </Button>
+                        </CSVLink>
+                    </div>
 
                 </div>
             </>
