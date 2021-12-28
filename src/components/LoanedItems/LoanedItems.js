@@ -71,7 +71,6 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
                     <style>
                         @media print {
                             @page {
-                                size: landscape;
                                 margin-top: 0mm;
                             }
                             .page-break {

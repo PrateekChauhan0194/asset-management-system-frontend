@@ -78,7 +78,7 @@ const Inventory = () => {
                     <style>
                         @media print {
                             @page {
-                                size: landscape;
+                                // size: landscape;
                                 margin-top: 0mm;
                             }
                             .page-break {
