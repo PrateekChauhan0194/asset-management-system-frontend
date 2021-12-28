@@ -11,6 +11,7 @@ import LoanCards from './components/LoanCards/LoanCards';
 import Inventory from './components/Inventory/Inventory';
 import LandingPage from './components/Landing/Landing';
 import ChangePassword from './components/ChangePassword/ChangePassword';
+import SearchItem from './components/SearchItem/SearchItem';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/loan-cards" element={<LoanCards />} />
+          <Route path="/search-item" element={<SearchItem />} />
         </Routes>
       </Router>
     </>

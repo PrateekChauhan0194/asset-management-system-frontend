@@ -4,17 +4,13 @@ import { logout } from '../../services/AuthService';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 
-const isDashboard = () => {
-    return window.location.pathname === '/dashboard';
-}
+const isDashboard = () => window.location.pathname === '/dashboard';
 
-const isInventory = () => {
-    return window.location.pathname === '/inventory';
-}
+const isInventory = () => window.location.pathname === '/inventory';
 
-const isLoanCards = () => {
-    return window.location.pathname === '/loan-cards';
-}
+const isLoanCards = () => window.location.pathname === '/loan-cards';
+
+const isSearchItem = () => window.location.pathname === '/search-item';
 
 
 const Navbar = () => {
@@ -37,6 +33,9 @@ const Navbar = () => {
                             </li>
                             <li className="nav-item">
                                 <Link className={`nav-link ${isLoanCards() && 'active'}`} to="/loan-cards">Loan cards</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className={`nav-link ${isSearchItem() && 'active'}`} to="/search-item">Search item</Link>
                             </li>
                         </ul>
                         <form className="d-flex">
