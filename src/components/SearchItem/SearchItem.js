@@ -126,7 +126,7 @@ const SearchItem = () => {
                                             <strong>Item location:</strong> {isItemLoaned() ? `Loaned to ${borrower.rank} ${borrower.fullName} [${borrower.serviceNumber}]` : `In Inventory`}
                                         </Typography>
                                         <Typography variant="h6" className="title-found-item-info">
-                                            <strong>{isItemLoaned() ? 'Issued on:' : 'Added on'}</strong> {new Date(item.issueDate).toDateString()}
+                                            <strong>{isItemLoaned() ? 'Issued on' : 'Added on'}:</strong> {new Date(item.issueDate).toDateString()}
                                         </Typography>
                                     </div>
                                 </div>
