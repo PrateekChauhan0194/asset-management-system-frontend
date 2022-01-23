@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import EditIcon from '@mui/icons-material/Edit';
 import PrintIcon from '@mui/icons-material/Print';
 import { parse } from 'node-html-parser';
 import IssueItem from '../IssueItem/IssueItem';
@@ -134,6 +135,7 @@ const Inventory = () => {
                                         <th scope="col">Added or Returned on</th>
                                         <th scope="col">Delete</th>
                                         <th scope="col">Issue item</th>
+                                        <th scope="col">Edit item</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -146,8 +148,8 @@ const Inventory = () => {
                                             <td>{inventoryItem.gigNumber}</td>
                                             <td>{new Date(inventoryItem.issueDate).toDateString()}</td>
                                             <td className='btn-delete-inventory-item'><DeleteIcon onClick={() => deleteItem(inventoryItem._id)} /></td>
-                                            <td className='btn-issue-inventory-item'><DoubleArrowIcon data-bs-toggle='modal' data-bs-target={`#issue-item-${inventoryItem._id}`} onClick={() => console.log(inventoryItem)} />
-                                            </td>
+                                            <td className='btn-issue-inventory-item'><DoubleArrowIcon data-bs-toggle='modal' data-bs-target={`#issue-item-${inventoryItem._id}`} onClick={() => console.log(inventoryItem)} /></td>
+                                            <td className='btn-edit-inventory-item btn-edit'><EditIcon onClick={() => console.log(inventoryItem)} /></td>
                                         </tr>
                                     ))}
                                 </tbody>

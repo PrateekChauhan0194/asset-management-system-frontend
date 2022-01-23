@@ -6,7 +6,7 @@ td.btn-delete-inventory-item svg:hover, .btn-delete svg:hover, .btn-return svg:h
     color: red;
 }
 
-.loan-card .btn-edit svg:hover {
+.btn-edit svg:hover {
     color: blue;
 }
 
