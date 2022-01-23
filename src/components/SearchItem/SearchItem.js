@@ -32,7 +32,7 @@ const SearchItem = () => {
         e.preventDefault();
 
         // API call to get item with the entered serial number
-        const response = await fetch(`${API_HOST}/api/v1/item/getItem/${enteredSerialNumber}`, {
+        const response = await fetch(`${API_HOST}/api/v1/item/getItemBySerialNumber/${enteredSerialNumber}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
