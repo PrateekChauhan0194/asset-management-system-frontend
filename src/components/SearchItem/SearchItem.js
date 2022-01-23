@@ -31,8 +31,14 @@ const SearchItem = () => {
     const handleSearch = async (e) => {
         e.preventDefault();
 
+        let serialNumber = enteredSerialNumber.toUpperCase();
+        // serialNumber.includes('/') && (serialNumber = serialNumber.replace('/', '%252F'));
+        if (serialNumber.includes('/')) {
+            serialNumber = serialNumber.replace('/', '%2F');
+        }
+
         // API call to get item with the entered serial number
-        const response = await fetch(`${API_HOST}/api/v1/item/getItemBySerialNumber/${enteredSerialNumber}`, {
+        const response = await fetch(`${API_HOST}/api/v1/item/getItemBySerialNumber/${serialNumber}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
