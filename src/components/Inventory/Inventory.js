@@ -13,6 +13,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import PrintIcon from '@mui/icons-material/Print';
 import { parse } from 'node-html-parser';
 import IssueItem from '../IssueItem/IssueItem';
+import EditItem from '../EditItem/EditItem';
 
 const Inventory = () => {
     const navigate = useNavigate();
@@ -69,6 +70,7 @@ const Inventory = () => {
 
         let printContents = printContainer.outerHTML.replace('Delete', '');
         printContents = printContents.replace('Issue item', '');
+        printContents = printContents.replace('Edit item', '');
 
         const popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
         popupWin.document.open();
@@ -142,6 +144,7 @@ const Inventory = () => {
                                     {inventoryItems.map((inventoryItem, index) => (
                                         <tr key={index}>
                                             <IssueItem item={inventoryItem} setInventoryItems={setInventoryItems} />
+                                            <EditItem item={inventoryItem} setInventoryItems={setInventoryItems} />
                                             <td>{inventoryItem.name}</td>
                                             <td>{inventoryItem.serialNumber}</td>
                                             <td>{inventoryItem.model}</td>
@@ -149,7 +152,7 @@ const Inventory = () => {
                                             <td>{new Date(inventoryItem.issueDate).toDateString()}</td>
                                             <td className='btn-delete-inventory-item'><DeleteIcon onClick={() => deleteItem(inventoryItem._id)} /></td>
                                             <td className='btn-issue-inventory-item'><DoubleArrowIcon data-bs-toggle='modal' data-bs-target={`#issue-item-${inventoryItem._id}`} onClick={() => console.log(inventoryItem)} /></td>
-                                            <td className='btn-edit-inventory-item btn-edit'><EditIcon onClick={() => console.log(inventoryItem)} /></td>
+                                            <td className='btn-edit-inventory-item btn-edit'><EditIcon data-bs-toggle='modal' data-bs-target={`#edit-item-${inventoryItem._id}`} onClick={() => console.log(inventoryItem)} /></td>
                                         </tr>
                                     ))}
                                 </tbody>
