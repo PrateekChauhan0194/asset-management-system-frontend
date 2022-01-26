@@ -1,13 +1,58 @@
 import React, { useState } from 'react';
 import { FormControl, Input, InputLabel, Button } from '@mui/material';
+import { API_HOST } from '../../config';
+import { toast } from 'react-toastify';
+import { getInventoryItems } from '../../services/APIComms';
 
 const EditItem = (props) => {
-    // const { name, serialNumber, model, gigNumber } = props.item;
-
     const [name, setName] = useState(props.item.name);
     const [serialNumber, setSerialNumber] = useState(props.item.serialNumber);
     const [model, setModel] = useState(props.item.model);
     const [gigNumber, setGigNumber] = useState(props.item.gigNumber);
+
+    const setDefaultValuesToState = () => {
+        setName(props.item.name);
+        setSerialNumber(props.item.serialNumber);
+        setModel(props.item.model);
+        setGigNumber(props.item.gigNumber);
+    };
+
+    const closeModal = () => {
+        document.querySelector(`#edit-item-${props.item._id} .btn-close`).click();
+    };
+
+    const editItem = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${props.item._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                serviceNumber: props.item.serviceNumber,
+                name: name.toUpperCase(),
+                serialNumber: serialNumber.toUpperCase(),
+                model: model.toUpperCase(),
+                gigNumber: gigNumber.toUpperCase(),
+                issueDate: props.item.issueDate,
+            }),
+        });
+        const data = await response.json();
+        if (!data.errors) {
+            toast.success('Item edited successfully');
+            props.setInventoryItems(await getInventoryItems());
+            closeModal();
+        } else {
+            if (name === '' || serialNumber === '' || model === '' || gigNumber === '') {
+                toast.error('All fields are required');
+                setDefaultValuesToState();
+                return;
+            }
+            data.errors.forEach((error) => {
+                toast.error(error.msg);
+            });
+        }
+    }
 
     return <>
         <div className='modal fade' id={`edit-item-${props.item._id}`} data-bs-backdrop='static' data-bs-keyboard='false' tabIndex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
@@ -15,12 +60,7 @@ const EditItem = (props) => {
                 <div className='modal-content'>
                     <div className='modal-header'>
                         <h5 className='modal-title' id={`edit-item_title_${props.item._id}`}>Edit item</h5>
-                        <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' onClick={() => {
-                            setName(props.item.name);
-                            setSerialNumber(props.item.serialNumber);
-                            setModel(props.item.model);
-                            setGigNumber(props.item.gigNumber);
-                        }} />
+                        <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close' onClick={setDefaultValuesToState} />
                     </div>
                     <div className='modal-body'>
                         <form className='row my-3' >
@@ -63,7 +103,7 @@ const EditItem = (props) => {
                                 </FormControl>
                             </div>
                             <div className='modal-footer pb-0'>
-                                <Button variant="contained" type="submit" color="primary" data-bs-dismiss='modal' >Edit item</Button>
+                                <Button variant="contained" type="submit" color="primary" onClick={editItem} >Edit item</Button>
                             </div>
                         </form>
                     </div>
