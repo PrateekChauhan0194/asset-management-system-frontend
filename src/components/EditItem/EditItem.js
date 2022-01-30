@@ -30,10 +30,10 @@ const EditItem = (props) => {
             },
             body: JSON.stringify({
                 serviceNumber: props.item.serviceNumber,
-                name: name.toUpperCase(),
-                serialNumber: serialNumber.toUpperCase(),
-                model: model.toUpperCase(),
-                gigNumber: gigNumber.toUpperCase(),
+                name: name.toUpperCase().trim(),
+                serialNumber: serialNumber.toUpperCase().trim(),
+                model: model.toUpperCase().trim(),
+                gigNumber: gigNumber.toUpperCase().trim(),
                 issueDate: props.item.issueDate,
             }),
         });

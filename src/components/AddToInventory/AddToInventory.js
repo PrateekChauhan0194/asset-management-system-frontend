@@ -16,10 +16,10 @@ const AddToInventory = ({ setInventoryItems }) => {
             },
             body: JSON.stringify({
                 serviceNumber: 'inventory',
-                name: document.getElementById('form-add-to-inventory--text-item-name').value.toUpperCase(),
-                serialNumber: document.getElementById('form-add-to-inventory--text-item-serial-number').value.toUpperCase(),
-                model: document.getElementById('form-add-to-inventory--text-item-model').value.toUpperCase(),
-                gigNumber: document.getElementById('form-add-to-inventory--text-item-gig-number').value.toUpperCase(),
+                name: document.getElementById('form-add-to-inventory--text-item-name').value.toUpperCase().trim(),
+                serialNumber: document.getElementById('form-add-to-inventory--text-item-serial-number').value.toUpperCase().trim(),
+                model: document.getElementById('form-add-to-inventory--text-item-model').value.toUpperCase().trim(),
+                gigNumber: document.getElementById('form-add-to-inventory--text-item-gig-number').value.toUpperCase().trim(),
                 issueDate: new Date().toISOString(),
             }),
         });
