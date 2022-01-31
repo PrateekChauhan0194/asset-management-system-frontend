@@ -243,7 +243,6 @@ const Dashboard = () => {
             item.issueDate = new Date(item.issueDate).toDateString();
         });
         setCsvData(data);
-        console.log(data);
     }
     const date = new Date();
     const dateString = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
