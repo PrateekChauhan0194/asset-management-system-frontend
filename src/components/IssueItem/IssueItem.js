@@ -30,7 +30,7 @@ const IssueItem = (props) => {
         });
         const item = await response.json();
         if (!item.errors) {
-            const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${props.item._id}`, {
+            const response = await fetch(`${API_HOST}/api/v1/item/issueItem/${props.item._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

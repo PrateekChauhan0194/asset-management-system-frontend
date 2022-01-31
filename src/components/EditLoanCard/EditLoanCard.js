@@ -27,7 +27,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
 
         // Update all the found items' service number property to the new service number
         loanedItems.forEach(async (item) => {
-            await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
+            await fetch(`${API_HOST}/api/v1/item/issueItem/${item._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
             setBorrowers(await getBorrowers());
 
             loanedItems.forEach(async (item) => {
-                await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
+                await fetch(`${API_HOST}/api/v1/item/issueItem/${item._id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const EditLoanCard = ({ borrower, setBorrowers }) => {
             });
         } else {
             loanedItems.forEach(async (item) => {
-                await fetch(`${API_HOST}/api/v1/item/updateItem/${item._id}`, {
+                await fetch(`${API_HOST}/api/v1/item/issueItem/${item._id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',

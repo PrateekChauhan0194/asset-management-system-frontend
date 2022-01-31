@@ -23,7 +23,7 @@ const LoanedItems = ({ borrower, loanedItems, setLoanedItems, fetchLoanedItems }
             // eslint-disable-next-line
             const confirmReturn = confirm('This item will be returned to the inventory. Confirm return?');
             if (confirmReturn) {
-                const response = await fetch(`${API_HOST}/api/v1/item/updateItem/${id}`, {
+                const response = await fetch(`${API_HOST}/api/v1/item/issueItem/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
