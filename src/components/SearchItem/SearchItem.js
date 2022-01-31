@@ -82,6 +82,12 @@ const SearchItem = () => {
         setBorrower(null);
     }
 
+    const handleKeyPressSubmit = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch(e);
+        }
+    }
+
     return (
         isLoggedIn() ? (
             <>
@@ -90,7 +96,7 @@ const SearchItem = () => {
                     <Typography variant="h2" className="title-search-item my-5">
                         Search item
                     </Typography>
-                    <form className="form-search-item">
+                    <div className="form-search-item">
                         <div className="form-group my-4">
                             <FormControl fullWidth className='my-2'>
                                 <InputLabel htmlFor="item-serial-number">Enter serial number</InputLabel>
@@ -98,9 +104,9 @@ const SearchItem = () => {
                                     onChange={(e) => { setEnteredSerialNumber(e.target.value); }} />
                             </FormControl>
                         </div>
-                        <Button variant="contained" size='medium' color="primary" onClick={handleSearch}>Search</Button>
-                        <Button variant="contained" size='medium' color="secondary" className='mx-3' onClick={handleClear}>Clear</Button>
-                    </form>
+                        <Button variant="contained" size='medium' color="primary" onClick={handleSearch} onSubmit={e => { e.preventDefault(); }} onKeyPress={handleKeyPressSubmit}>Search</Button>
+                        <Button variant="contained" size='medium' color="secondary" className='mx-3' onClick={handleClear} onSubmit={e => { e.preventDefault(); }}>Clear</Button>
+                    </div>
                 </div>
 
                 <div className="container container-found-item">
