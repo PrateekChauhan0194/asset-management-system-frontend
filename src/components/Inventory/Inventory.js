@@ -151,8 +151,8 @@ const Inventory = () => {
                                             <td>{inventoryItem.gigNumber}</td>
                                             <td>{new Date(inventoryItem.issueDate).toDateString()}</td>
                                             <td className='btn-delete-inventory-item'><DeleteIcon onClick={() => deleteItem(inventoryItem._id)} /></td>
-                                            <td className='btn-issue-inventory-item'><DoubleArrowIcon data-bs-toggle='modal' data-bs-target={`#issue-item-${inventoryItem._id}`} onClick={() => console.log(inventoryItem)} /></td>
-                                            <td className='btn-edit-inventory-item btn-edit'><EditIcon data-bs-toggle='modal' data-bs-target={`#edit-item-${inventoryItem._id}`} onClick={() => console.log(inventoryItem)} /></td>
+                                            <td className='btn-issue-inventory-item'><DoubleArrowIcon data-bs-toggle='modal' data-bs-target={`#issue-item-${inventoryItem._id}`} /></td>
+                                            <td className='btn-edit-inventory-item btn-edit'><EditIcon data-bs-toggle='modal' data-bs-target={`#edit-item-${inventoryItem._id}`} /></td>
                                         </tr>
                                     ))}
                                 </tbody>

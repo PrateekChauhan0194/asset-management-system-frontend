@@ -70,7 +70,6 @@ const SearchItem = () => {
         const data = await response.json();
         if (response.status === 200) {
             setBorrower(data);
-            console.log(data);
         } else {
             toast.error(data.msg);
         }
