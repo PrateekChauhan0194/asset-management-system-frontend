@@ -31,7 +31,7 @@ const EditItem = (props) => {
             body: JSON.stringify({
                 serviceNumber: props.item.serviceNumber,
                 name: name.toUpperCase().trim(),
-                serialNumber: serialNumber.toUpperCase().trim(),
+                serialNumber: (serialNumber.toUpperCase().trim()).split(' ').join(''),
                 model: model.toUpperCase().trim(),
                 gigNumber: gigNumber.toUpperCase().trim(),
                 issueDate: props.item.issueDate,

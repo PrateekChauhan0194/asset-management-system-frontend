@@ -17,7 +17,7 @@ const AddToInventory = ({ setInventoryItems }) => {
             body: JSON.stringify({
                 serviceNumber: 'inventory',
                 name: document.getElementById('form-add-to-inventory--text-item-name').value.toUpperCase().trim(),
-                serialNumber: document.getElementById('form-add-to-inventory--text-item-serial-number').value.toUpperCase().trim(),
+                serialNumber: (document.getElementById('form-add-to-inventory--text-item-serial-number').value.toUpperCase().trim()).split(' ').join(''),
                 model: document.getElementById('form-add-to-inventory--text-item-model').value.toUpperCase().trim(),
                 gigNumber: document.getElementById('form-add-to-inventory--text-item-gig-number').value.toUpperCase().trim(),
                 issueDate: new Date().toISOString(),
@@ -25,7 +25,6 @@ const AddToInventory = ({ setInventoryItems }) => {
         });
 
         const data = await response.json();
-        // console.log(data);
         if (!data.errors) {
             setInventoryItems(await getInventoryItems());
             toast.success('Item added to inventory');
