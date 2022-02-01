@@ -8,6 +8,8 @@ import LoanCard from '../LoanCard/LoanCard';
 import { getBorrowers } from '../../services/APIComms';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import AllBorrowers from '../AllBorrowers/AllBorrowers';
 
 const LoanCards = () => {
     const navigate = useNavigate();
@@ -30,11 +32,13 @@ const LoanCards = () => {
             <>
                 <Navbar />
                 <AddLoanCard setBorrowers={setBorrowers} />
+                <AllBorrowers borrowers={borrowers} />
                 <div className="container">
                     <div className='container-loan-cards-list'>
                         <Typography variant="h2" className="title-loan-cards-list mt-5">
                             Loan cards
                         </Typography>
+                        <button className="btn btn-sm btn-outline-secondary mb-4" data-bs-toggle='modal' data-bs-target='#view-borrowers'><FormatListNumberedIcon /> View All borrowers</button>
 
                         <div className="container-loan-cards-list-cards">
                             {
