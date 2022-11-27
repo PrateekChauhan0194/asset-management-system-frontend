@@ -16,7 +16,7 @@ import SearchItem from './components/SearchItem/SearchItem';
 function App() {
   return (
     <>
-      <ToastContainer hideProgressBar='true' />
+      <ToastContainer hideProgressBar='true' toastClassName="toast-body" />
       <Router>
         <ChangePassword />
         <Routes>
