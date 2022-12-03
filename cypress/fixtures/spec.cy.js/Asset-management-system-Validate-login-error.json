@@ -1,0 +1,36 @@
+{
+    "GET:http://localhost:8000/api/v1/auth/check": [
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"13-hhUxkdFwUAI6FC6Iin7eLjb3i3w\"",
+                "date": "Sat, 03 Dec 2022 05:01:24 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 9
+        }
+    ],
+    "POST:http://localhost:8000/api/v1/auth/login:{\"username\":\"admin\",\"password\":\"admin\"}": [
+        {
+            "body": {
+                "msg": "Incorrect password"
+            },
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "content-type": "application/json; charset=utf-8",
+                "content-length": "28",
+                "etag": "W/\"1c-1Zg4ZwhdFaVZ1ULoyZiJ3hl56G8\"",
+                "date": "Sat, 03 Dec 2022 05:01:25 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 401,
+            "delay": 77
+        }
+    ]
+}
