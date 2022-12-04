@@ -10,22 +10,26 @@ const stubMode = ReplayMode.Replaying;
 describe('Asset management system', () => {
   enableCypressReplay(stubMode);
 
+  const LoginPage = new Login();
+  let data;
+
   beforeEach(() => {
+    cy.fixture('testData').then((testData) => {
+      data = testData;
+    });
     cy.visit('/');
   });
 
   it('Validate login error', () => {
-    const LoginPage = new Login();
-    LoginPage.formTitle().should('be.visible').should('contain', 'Asset management system - Login');
-    LoginPage.doLogin('admin', 'admin');
-    cy.get('div.toast-body').should('contain', 'Incorrect username or password!');
+    LoginPage.formTitle().should('be.visible').should('contain', data.login.title);
+    LoginPage.doLogin(data.login.incorrectCredentials.username, data.login.incorrectCredentials.password);
+    cy.get('div.toast-body').should('contain', data.login.toastMessage.errorIncorrectUsername);
   });
 
   it('Validate login success', () => {
-    const LoginPage = new Login();
-    LoginPage.formTitle().should('be.visible').should('contain', 'Asset management system - Login');
-    LoginPage.doLogin('admin', 'Password123!');
-    cy.get('div.toast-body').should('contain', 'Login successful, Welcome!');
+    LoginPage.formTitle().should('be.visible').should('contain', data.login.title);
+    LoginPage.doLogin(data.login.correctCredentials.username, data.login.correctCredentials.password);
+    cy.get('div.toast-body').should('contain', data.login.toastMessage.success);
   });
 
 })

@@ -1,0 +1,17 @@
+{
+  "login": {
+    "title": "Asset management system - Login",
+    "toastMessage": {
+      "success": "Login successful, Welcome!",
+      "errorIncorrectUsername": "Incorrect username or password"
+    },
+    "incorrectCredentials": {
+      "username": "admin",
+      "password": "admin"
+    },
+    "correctCredentials": {
+      "username": "admin",
+      "password": "Password123!"
+    }
+  }
+}
