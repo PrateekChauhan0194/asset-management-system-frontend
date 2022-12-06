@@ -26,7 +26,7 @@ const Login = () => {
                 <div className="row">
                     <div className="col-md-6 mx-auto">
                         <div className="card card-body">
-                            <h3 className="text-center mb-4 form-title">Asset management system - Login</h3>
+                            <h3 className="text-center mb-4 form-title">Login</h3>
                             <form>
                                 <div className="form-group my-3">
                                     <label>Username</label>

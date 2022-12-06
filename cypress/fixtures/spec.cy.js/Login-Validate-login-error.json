@@ -6,12 +6,12 @@
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
                 "etag": "W/\"13-hhUxkdFwUAI6FC6Iin7eLjb3i3w\"",
-                "date": "Sun, 04 Dec 2022 11:54:27 GMT",
+                "date": "Tue, 06 Dec 2022 00:49:09 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
             "statusCode": 304,
-            "delay": 18
+            "delay": 17
         }
     ],
     "POST:http://localhost:8000/api/v1/auth/login:{\"username\":\"admin\",\"password\":\"admin\"}": [
@@ -25,12 +25,12 @@
                 "content-type": "application/json; charset=utf-8",
                 "content-length": "28",
                 "etag": "W/\"1c-1Zg4ZwhdFaVZ1ULoyZiJ3hl56G8\"",
-                "date": "Sun, 04 Dec 2022 11:54:27 GMT",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
             "statusCode": 401,
-            "delay": 111
+            "delay": 94
         }
     ]
 }

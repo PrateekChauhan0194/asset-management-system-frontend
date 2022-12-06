@@ -6,26 +6,26 @@
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
                 "etag": "W/\"13-hhUxkdFwUAI6FC6Iin7eLjb3i3w\"",
-                "date": "Sun, 04 Dec 2022 11:54:27 GMT",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
             "statusCode": 304,
-            "delay": 10
+            "delay": 7
         }
     ],
     "POST:http://localhost:8000/api/v1/auth/login:{\"username\":\"admin\",\"password\":\"Password123!\"}": [
         {
             "body": {
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM4MmViMWM2ZmJiZWJmNWNhN2NiMjdmIn0sImlhdCI6MTY3MDE1NDg2OCwiZXhwIjoxNjcwNTE0ODY4fQ.T55zW5xa37L_XoUcaWXGds3WRT-Tc-xauEJvxwgylPQ"
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM4MmViMWM2ZmJiZWJmNWNhN2NiMjdmIn0sImlhdCI6MTY3MDI4Nzc1MCwiZXhwIjoxNjcwNjQ3NzUwfQ.mAVT438sqVpORmf9uHwDCYO8I_5dWdF7HUyaCaD1LXg"
             },
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
                 "content-type": "application/json; charset=utf-8",
                 "content-length": "195",
-                "etag": "W/\"c3-KcBfPfVRv3YjWqUsWZOOKqsPJUw\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"c3-pyfVOUrlFygjreIDs0K48dAFbhk\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
@@ -33,63 +33,92 @@
             "delay": 78
         }
     ],
-    "GET:http://localhost:8000/api/v1/item/getAll": [
+    "GET:http://localhost:8000/api/v1/auth": [
         {
-            "body": [
-                {
-                    "_id": "638adb43863de4318351d9f8",
-                    "serviceNumber": "712615",
-                    "name": "LAPTOP",
-                    "serialNumber": "1",
-                    "model": "MACBOOK",
-                    "gigNumber": "1",
-                    "issueDate": "2022-12-03T05:17:15.271Z",
-                    "dataCreationDate": "2022-12-03T05:17:22.679Z",
-                    "__v": 0
-                },
-                {
-                    "_id": "638adb74863de4318351d9ff",
-                    "serviceNumber": "inventory",
-                    "name": "LAPTOP",
-                    "serialNumber": "2",
-                    "model": "DELL XPS",
-                    "gigNumber": "2",
-                    "issueDate": "2022-12-03T05:15:32.924Z",
-                    "dataCreationDate": "2022-12-03T05:15:32.935Z",
-                    "__v": 0
-                },
-                {
-                    "_id": "638adba0863de4318351da3f",
-                    "serviceNumber": "inventory",
-                    "name": "LAPTOP",
-                    "serialNumber": "3",
-                    "model": "MACBOOK",
-                    "gigNumber": "1",
-                    "issueDate": "2022-12-03T05:16:16.511Z",
-                    "dataCreationDate": "2022-12-03T05:16:16.521Z",
-                    "__v": 0
-                }
-            ],
+            "body": "",
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "content-type": "application/json; charset=utf-8",
-                "content-length": "674",
-                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
-            "statusCode": 200,
-            "delay": 47
+            "statusCode": 304,
+            "delay": 16
         },
         {
             "body": "",
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 23
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 11
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 8
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 18
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 7
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
@@ -101,21 +130,73 @@
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
             "statusCode": 304,
-            "delay": 12
+            "delay": 5
         },
         {
             "body": "",
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 6
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 5
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 6
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 5
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
@@ -127,56 +208,49 @@
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
             "statusCode": 304,
-            "delay": 8
+            "delay": 7
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 5
+        },
+        {
+            "body": "",
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
+                "connection": "keep-alive",
+                "keep-alive": "timeout=5"
+            },
+            "statusCode": 304,
+            "delay": 5
         }
     ],
-    "GET:http://localhost:8000/api/v1/auth": [
-        {
-            "body": {
-                "_id": "6382eb1c6fbbebf5ca7cb27f",
-                "username": "admin",
-                "date": "2022-11-27T04:44:12.116Z",
-                "__v": 0
-            },
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "content-type": "application/json; charset=utf-8",
-                "content-length": "95",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 200,
-            "delay": 51
-        },
+    "GET:http://localhost:8000/api/v1/item/getAll": [
         {
             "body": "",
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 9
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
@@ -188,8 +262,8 @@
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
@@ -201,34 +275,8 @@
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 9
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 12
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
+                "date": "Tue, 06 Dec 2022 00:49:10 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
@@ -240,117 +288,26 @@
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
             "statusCode": 304,
-            "delay": 12
+            "delay": 14
         },
         {
             "body": "",
             "headers": {
                 "x-powered-by": "Express",
                 "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 9
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 7
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 7
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 7
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 6
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
+                "etag": "W/\"2a2-slxs1CoPcwljhi1dvIC+5oy/MyY\"",
+                "date": "Tue, 06 Dec 2022 00:49:11 GMT",
                 "connection": "keep-alive",
                 "keep-alive": "timeout=5"
             },
             "statusCode": 304,
             "delay": 8
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 10
-        },
-        {
-            "body": "",
-            "headers": {
-                "x-powered-by": "Express",
-                "access-control-allow-origin": "*",
-                "etag": "W/\"5f-y0maJLmOokwD4tbA3RDJvbfCMkU\"",
-                "date": "Sun, 04 Dec 2022 11:54:28 GMT",
-                "connection": "keep-alive",
-                "keep-alive": "timeout=5"
-            },
-            "statusCode": 304,
-            "delay": 9
         }
     ]
 }

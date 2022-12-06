@@ -5,10 +5,14 @@ import { Login } from "../support/pageObjects/Login.po";
  * ReplayMode.Recording: Record a new test
  * ReplayMode.Replaying: Replay a recorded test
  */
-const stubMode = ReplayMode.Replaying;
+const stubMode = ReplayMode.Recording;
 
-describe('Asset management system', () => {
+describe('Login', () => {
   enableCypressReplay(stubMode);
+
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    return false;
+  });
 
   const LoginPage = new Login();
   let data;
